@@ -1,4 +1,4 @@
-package java.controller.dao;
+package controller.dao.oracle;
 
 import java.sql.Connection;
 import java.sql.Driver;
