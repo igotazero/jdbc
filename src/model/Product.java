@@ -1,20 +1,23 @@
 package model;
 
+import java.util.Date;
+
 public class Product {
-    private int uid;
+    private int id;
     private String name;
     private String description;
     private double price;
     private double gap;
     private int hours;
+    private Date startBiddingDate;
     private boolean buyNow;
 
-    public int getUid() {
-        return uid;
+    public int getId() {
+        return id;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -55,6 +58,14 @@ public class Product {
 
     public void setHours(int hours) {
         this.hours = hours;
+    }
+
+    public Date getStartBiddingDate() {
+        return startBiddingDate;
+    }
+
+    public void setStartBiddingDate(Date startBiddingDate) {
+        this.startBiddingDate = startBiddingDate;
     }
 
     public boolean isBuyNow() {

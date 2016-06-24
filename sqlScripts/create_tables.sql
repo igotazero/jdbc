@@ -1,0 +1,29 @@
+/*Create tables*/
+CREATE TABLE Users(
+login VARCHAR2(30),
+password VARCHAR2(100) NOT NULL,
+Name VARCHAR2(100) NOT NULL,
+Adress VARCHAR2(100) NOT NULL,
+PRIMARY KEY (login));
+
+CREATE TABLE Products (
+id INT,
+sellerID VARCHAR2(30),
+Name VARCHAR2(200) NOT NULL,
+Description VARCHAR2(400),
+Price NUMBER NOT NULL,
+Gap NUMBER,
+Hours INT,
+ByNow NUMBER,
+PRIMARY KEY (id), 
+FOREIGN KEY (sellerID) REFERENCES Users (login),
+CONSTRAINT bool CHECK (ByNow IN (1, 2)));
+
+CREATE TABLE Bids(
+id INT,
+userLogin VARCHAR2(30) NOT NULL,
+productId INT NOT NULL,
+bid NUMBER NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (userLogin) REFERENCES Users (login),
+FOREIGN KEY (productId) REFERENCES Products (id));
