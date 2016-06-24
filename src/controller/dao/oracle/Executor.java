@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Andrei_Zanozin on 6/23/2016.
  */
 public class Executor<T> {
-    public int execUpdate(String query, ArrayList<String> args){
+    public int execUpdate(String query, List<String> args){
         try(Connection connection = Connector.getConnection()) {
             if (connection != null) {
                 PreparedStatement statement = connection.prepareStatement(query);
@@ -27,7 +27,7 @@ public class Executor<T> {
         }
     }
 
-    public List<T> execQuery(String query, ArrayList<String> args, ResultHandler<T> resultHandler){
+    public List<T> execQuery(String query, List<String> args, ResultHandler<T> resultHandler){
         try(Connection connection = Connector.getConnection()) {
             if (connection != null) {
                 PreparedStatement statement = connection.prepareStatement(query);
@@ -43,7 +43,7 @@ public class Executor<T> {
         }
     }
 
-    private void fillArguments(PreparedStatement statement, ArrayList<String> args) throws SQLException{
+    private void fillArguments(PreparedStatement statement, List<String> args) throws SQLException{
         for (int i = 0; i < args.size(); i++){
             statement.setString(i + 1, args.get(i));
         }

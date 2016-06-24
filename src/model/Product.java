@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Product {
     private int id;
+    private String sellerLogin;
     private String name;
     private String description;
     private double price;
@@ -18,6 +19,14 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getSellerLogin() {
+        return sellerLogin;
+    }
+
+    public void setSellerLogin(String sellerLogin) {
+        this.sellerLogin = sellerLogin;
     }
 
     public String getName() {
