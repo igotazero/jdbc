@@ -14,13 +14,13 @@ public class updateProductDAO_Test {
         ProductDAO dao = FactoryDAO.getConcreteFactory(0).getProductDAO();
 
         Product product = new Product();
-        product.setId(12);
+        product.setId(1);
         product.setSellerLogin("one");
         product.setName("hui");
         product.setDescription("Cell phone");
-        product.setPrice(10.2);
-        product.setGap(5);
-        product.setHours(6);
+        product.setPrice(2000);
+        product.setGap(8);
+        product.setHours(12);
         product.setStartBiddingDate(new Date());
         product.setBuyNow(false);
 

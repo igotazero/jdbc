@@ -1,4 +1,4 @@
-INSERT INTO Users (Login, Password, Name, Adress) VALUES ('one', 'pass', 'Andrew', '753159');
+INSERT INTO Users (Login, Password, Name, Adress) VALUES ('one', 'pass', 'Andrew', 'Saratov');
 
 CREATE TABLE dates (d DATE);
 
@@ -7,3 +7,13 @@ INSERT INTO dates (d) VALUES (SYSDATE);
 SELECT TO_CHAR(d, 'DD.MM.YYYY HH24:MI:SS') FROM DATES;
 
 SELECT * FROM Products;
+
+SELECT SYSDATE FROM DUAL;
+SELECT SYSTIMESTAMP FROM DUAL;
+SELECT TO_CHAR(SYSDATE, 'DD.MM.YYYY HH24:MI:SS') FROM DUAL;
+
+UPDATE Products
+SET name = 'tttttttttttt'
+WHERE id = 9;
+
+SELECT * FROM USERS;

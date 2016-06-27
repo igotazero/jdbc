@@ -47,16 +47,7 @@ public class OracleProductDAO implements ProductDAO {
         }
     };
 
-    @Override
-    public int update(Product product) {
-        String query = "UPDATE " + tableName + " SET NAME = ? WHERE ID = ?";
-        List<String> args = new ArrayList<>();
-        args.add(product.getName());
-        args.add(Integer.toString(product.getId()));
-        Executor<Product> executor = new Executor<>();
-        return executor.execUpdate(query, args);
-    }
-  /*
+
     @Override
     public int update(Product product) {
         String query = "UPDATE " + tableName + " SET SELLERID = ?, NAME = ?, DESCRIPTION = ?, " +
@@ -70,14 +61,14 @@ public class OracleProductDAO implements ProductDAO {
         args.add(Double.toString(product.getGap()));
         args.add(Integer.toString(product.getHours()));
         Timestamp timestamp = new Timestamp(product.getStartBiddingDate().getTime());
-        args.add(timestamp.toString());
-        //args.add("27-JUN-16");
+        //args.add(timestamp.toString());
+        args.add("27-JUN-16");
         args.add(Integer.toString(ParseHandler.convert(product.isBuyNow())));
         args.add(Integer.toString(product.getId()));
         Executor<Product> executor = new Executor<>();
         return executor.execUpdate(query, args);
     }
-*/
+
     @Override
     public Product get(int id) {
         String query = "SELECT * FROM " + tableName + " WHERE ID = ?";
