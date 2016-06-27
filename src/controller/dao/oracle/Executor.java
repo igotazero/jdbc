@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,8 +43,10 @@ public class Executor<T> {
     }
 
     private void fillArguments(PreparedStatement statement, List<String> args) throws SQLException{
-        for (int i = 0; i < args.size(); i++){
-            statement.setString(i + 1, args.get(i));
+        if (args != null) {
+            for (int i = 1; i <= args.size(); i++) {
+                statement.setString(i, args.get(i - 1));
+            }
         }
     }
 }

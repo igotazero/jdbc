@@ -1,7 +1,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.epam</groupId>
-    <artifactId>jaxp</artifactId>
+    <artifactId>onlineMarketplace</artifactId>
     <version>1.0</version>
 
     <properties>

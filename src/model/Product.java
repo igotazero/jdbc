@@ -1,5 +1,7 @@
 package model;
 
+import controller.dao.oracle.ParseHandler;
+
 import java.util.Date;
 
 public class Product {
@@ -83,5 +85,11 @@ public class Product {
 
     public void setBuyNow(boolean buyNow) {
         this.buyNow = buyNow;
+    }
+
+    @Override
+    public String toString() {
+        return id + " | " + sellerLogin + " | " + name + " | " + description + " | " + price +
+                " | " + gap + " | " + hours + " | " + ParseHandler.dateToString(startBiddingDate) + " | " + buyNow;
     }
 }

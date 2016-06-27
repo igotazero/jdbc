@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class ParseHandler {
     //select TO_CHAR(sysdate, 'DD.MM.YYYY HH24:MI:SS') from dual;
-    private static SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static String dateToString(Date date){
         return format.format(date);

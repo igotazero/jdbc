@@ -9,5 +9,7 @@ import java.util.List;
  */
 public interface ProductDAO {
     List<Product> getAll();
-    void add(Product product);
+    Product get(int id);
+    int add(Product product);
+    int update(Product product);
 }
