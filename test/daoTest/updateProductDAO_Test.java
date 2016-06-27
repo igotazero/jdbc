@@ -14,9 +14,9 @@ public class updateProductDAO_Test {
         ProductDAO dao = FactoryDAO.getConcreteFactory(0).getProductDAO();
 
         Product product = new Product();
-        product.setId(9);
-        product.setSellerLogin("two");
-        product.setName("Phone");
+        product.setId(12);
+        product.setSellerLogin("one");
+        product.setName("hui");
         product.setDescription("Cell phone");
         product.setPrice(10.2);
         product.setGap(5);
