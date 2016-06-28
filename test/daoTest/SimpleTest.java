@@ -1,5 +1,7 @@
 package daoTest;
 
+import controller.dao.oracle.ParseHandler;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -8,7 +10,6 @@ import java.util.Date;
  */
 public class SimpleTest {
     public static void main(String[] args) {
-        Timestamp timestamp = new Timestamp(new Date().getTime());
-        System.out.println(timestamp.toString());
+        System.out.println(ParseHandler.dateToString(new Date()));
     }
 }

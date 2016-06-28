@@ -8,8 +8,8 @@ import java.util.Date;
  * Created by Andrei_Zanozin on 6/24/2016.
  */
 public class ParseHandler {
-    //select TO_CHAR(sysdate, 'DD.MM.YYYY HH24:MI:SS') from dual;
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static String oracleFormat = "YYYY-MM-DD HH24:MI:SS";
 
     public static String dateToString(Date date){
         return format.format(date);
@@ -42,5 +42,9 @@ public class ParseHandler {
             }
             default:return false;
         }
+    }
+
+    public static String getOracleFormat() {
+        return oracleFormat;
     }
 }

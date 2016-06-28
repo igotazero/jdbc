@@ -15,9 +15,9 @@ public class AddProductDAOTest {
 
         Product product = new Product();
         product.setSellerLogin("one");
-        product.setName("Phone");
-        product.setDescription("Mobile phone");
-        product.setPrice(10.2);
+        product.setName("Oven");
+        product.setDescription("Microvawe oven");
+        product.setPrice(202);
         product.setGap(5);
         product.setHours(6);
         product.setStartBiddingDate(new Date());
