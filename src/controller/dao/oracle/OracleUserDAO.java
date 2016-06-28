@@ -71,6 +71,12 @@ public class OracleUserDAO implements UserDAO {
         }
     }
 
+    @Override
+    public List<User> getAll() {
+        String query = "SELECT * FROM " + TABLE_NAME;
+        return executor.execQuery(query, null, userResultHandler);
+    }
+
     public int update(User user){
         StringBuilder query = new StringBuilder();
         query.append("UPDATE ").append(TABLE_NAME).append(" SET ")

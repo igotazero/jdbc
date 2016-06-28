@@ -6,6 +6,15 @@ public class User {
     private String name;
     private String address;
 
+    public User(){}
+
+    public User(String login, String password, String name, String address) {
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.address = address;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -41,5 +50,38 @@ public class User {
     @Override
     public String toString() {
         return login + " | " + password + " | " + name + " | " + address;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null){
+            return false;
+        }
+        if (this == obj){
+            return true;
+        }
+        if (getClass() != obj.getClass()){
+            return false;
+        }
+        User user = (User)obj;
+        if (!login.equals(user.login)){
+            return false;
+        }
+        if (!password.equals(user.password)){
+            return false;
+        }
+        if (!name.equals(user.name)){
+            return false;
+        }
+        if (!address.equals(user.address)){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return login.length() * password.length()
+                * name.length() * address.length() *  777;
     }
 }

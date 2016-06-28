@@ -1,6 +1,7 @@
 package daoTest;
 
 import controller.dao.oracle.ParseHandler;
+import model.User;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -10,6 +11,8 @@ import java.util.Date;
  */
 public class SimpleTest {
     public static void main(String[] args) {
-        System.out.println(ParseHandler.dateToString(new Date()));
+        User koshi = new User("koshi", "753159", "Koshti", "Paris");
+        User clon = new User("koshi", "753159", "Koshi", "Paris");
+        System.out.println(clon.equals(koshi));
     }
 }
