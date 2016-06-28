@@ -1,4 +1,4 @@
-package daoTest;
+package daoTest.proguct;
 
 import controller.dao.FactoryDAO;
 import controller.dao.ProductDAO;
@@ -9,21 +9,20 @@ import java.util.Date;
 /**
  * Created by Andrei_Zanozin on 6/27/2016.
  */
-public class updateProductDAO_Test {
+public class AddProductDAOTest {
     public static void main(String[] args) {
         ProductDAO dao = FactoryDAO.getConcreteFactory(0).getProductDAO();
 
         Product product = new Product();
-        product.setId(3);
         product.setSellerLogin("one");
-        product.setName("Mixer");
-        product.setDescription("For kitchen");
-        product.setPrice(2000);
-        product.setGap(8);
-        product.setHours(12);
+        product.setName("Oven");
+        product.setDescription("Microvawe oven");
+        product.setPrice(202);
+        product.setGap(5);
+        product.setHours(6);
         product.setStartBiddingDate(new Date());
         product.setBuyNow(false);
 
-        System.out.println(dao.update(product) + " row(s) update");
+        System.out.println(dao.add(product) + " row(s) insert");
     }
 }

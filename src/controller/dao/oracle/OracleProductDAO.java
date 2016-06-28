@@ -14,38 +14,38 @@ import java.util.List;
  * Created by Andrei_Zanozin on 6/23/2016.
  */
 public class OracleProductDAO implements ProductDAO {
-    private final String tableName = "Products";
-    private final String id = "ID";
-    private final String sellerId = "SELLERID";
-    private final String name = "NAME";
-    private final String description = "DESCRIPTION";
-    private final String price = "PRICE";
-    private final String gap = "GAP";
-    private final String hours = "HOURS";
-    private final String startBiddingDate = "STARTBIDDINGDATE";
-    private final String buyNow = "BUYNOW";
+    private final String TABLE_NAME = "Products";
+    private final String ID = "ID";
+    private final String SELLER_ID = "SELLERID";
+    private final String NAME = "NAME";
+    private final String DESCRIPTION = "DESCRIPTION";
+    private final String PRICE = "PRICE";
+    private final String GAP = "GAP";
+    private final String HOURS = "HOURS";
+    private final String START_BIDDING_DATE = "STARTBIDDINGDATE";
+    private final String BUY_NOW = "BUYNOW";
 
-    private ResultHandler<Product> resultHandlerProduct = new ResultHandler<Product>() {
+    private ResultHandler<Product> productResultHandler = new ResultHandler<Product>() {
         @Override
         public List<Product> convert(ResultSet resultSet) {
             List<Product> list = new ArrayList<>();
             try {
                 while(resultSet.next()){
                     Product product = new Product();
-                    product.setId(resultSet.getInt(id));
-                    product.setSellerLogin(resultSet.getString(sellerId));
-                    product.setName(resultSet.getString(name));
-                    product.setDescription(resultSet.getString(description));
-                    product.setPrice(resultSet.getDouble(price));
-                    product.setGap(resultSet.getDouble(gap));
-                    product.setHours(resultSet.getInt(hours));
-                    Timestamp timestamp = resultSet.getTimestamp(startBiddingDate);
+                    product.setId(resultSet.getInt(ID));
+                    product.setSellerLogin(resultSet.getString(SELLER_ID));
+                    product.setName(resultSet.getString(NAME));
+                    product.setDescription(resultSet.getString(DESCRIPTION));
+                    product.setPrice(resultSet.getDouble(PRICE));
+                    product.setGap(resultSet.getDouble(GAP));
+                    product.setHours(resultSet.getInt(HOURS));
+                    Timestamp timestamp = resultSet.getTimestamp(START_BIDDING_DATE);
                     if (timestamp != null){
                         product.setStartBiddingDate(new Date(timestamp.getTime()));
                     }else {
                         product.setStartBiddingDate(null);
                     }
-                    product.setBuyNow(ParseHandler.convert(resultSet.getInt(buyNow)));
+                    product.setBuyNow(ParseHandler.convert(resultSet.getInt(BUY_NOW)));
                     list.add(product);
                 }
             }catch (SQLException e){
@@ -59,16 +59,16 @@ public class OracleProductDAO implements ProductDAO {
     @Override
     public int update(Product product) {
         StringBuilder query = new StringBuilder();
-        query.append("UPDATE ").append(tableName).append(" SET ");
-        query.append(sellerId).append(" = ?, ");
-        query.append(name).append(" = ?, ");
-        query.append(description).append(" = ?, ");
-        query.append(price).append(" = ?, ");
-        query.append(gap).append(" = ?, ");
-        query.append(hours).append(" = ?, ");
-        query.append(startBiddingDate).append(" = (TO_DATE(?, '").append(ParseHandler.getOracleFormat()).append("'), ");
-        query.append(buyNow).append(" = ?, ");
-        query.append("WHERE ").append(id).append(" = ?");
+        query.append("UPDATE ").append(TABLE_NAME).append(" SET ");
+        query.append(SELLER_ID).append(" = ?, ");
+        query.append(NAME).append(" = ?, ");
+        query.append(DESCRIPTION).append(" = ?, ");
+        query.append(PRICE).append(" = ?, ");
+        query.append(GAP).append(" = ?, ");
+        query.append(HOURS).append(" = ?, ");
+        query.append(START_BIDDING_DATE).append(" = (TO_DATE(?, '").append(ParseHandler.getOracleFormat()).append("'), ");
+        query.append(BUY_NOW).append(" = ?, ");
+        query.append("WHERE ").append(ID).append(" = ?");
 
         List<String> args = new ArrayList<>();
         args.add(product.getSellerLogin());
@@ -86,11 +86,11 @@ public class OracleProductDAO implements ProductDAO {
 
     @Override
     public Product get(int id) {
-        String query = "SELECT * FROM " + tableName + " WHERE " + id + " = ?";
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + id + " = ?";
         Executor<Product> executor = new Executor<>();
         List<String> args = new ArrayList<String>();
         args.add(Integer.toString(id));
-        List<Product> res = executor.execQuery(query, args, resultHandlerProduct);
+        List<Product> res = executor.execQuery(query, args, productResultHandler);
         if (!res.isEmpty()){
             return res.get(0);
         }else {
@@ -101,17 +101,17 @@ public class OracleProductDAO implements ProductDAO {
     @Override
     public int add(Product product){
         StringBuilder query = new StringBuilder();
-        query.append("INSERT INTO ").append(tableName);
+        query.append("INSERT INTO ").append(TABLE_NAME);
         query.append(" (")
-                .append(id).append(", ")
-                .append(sellerId).append(", ")
-                .append(name).append(", ")
-                .append(description).append(", ")
-                .append(price).append(", ")
-                .append(gap).append(", ")
-                .append(hours).append(", ")
-                .append(startBiddingDate).append(", ")
-                .append(buyNow).append(") ");
+                .append(ID).append(", ")
+                .append(SELLER_ID).append(", ")
+                .append(NAME).append(", ")
+                .append(DESCRIPTION).append(", ")
+                .append(PRICE).append(", ")
+                .append(GAP).append(", ")
+                .append(HOURS).append(", ")
+                .append(START_BIDDING_DATE).append(", ")
+                .append(BUY_NOW).append(") ");
         query.append("VALUES (products_seq.nextval, ? , ?, ?, ?, ?, ?, SYSDATE, ?)");
 
         List<String> args = new ArrayList<>();
@@ -128,15 +128,15 @@ public class OracleProductDAO implements ProductDAO {
 
     @Override
     public List<Product> getAll(){
-        String query = "SELECT * FROM " + tableName;
+        String query = "SELECT * FROM " + TABLE_NAME;
         Executor<Product> executor = new Executor<>();
-        List<Product> result = executor.execQuery(query, null, resultHandlerProduct);
+        List<Product> result = executor.execQuery(query, null, productResultHandler);
         return result;
     }
 
     @Override
     public int remove(int id) {
-        String query = "DELETE FROM " + tableName + " WHERE " + id + " = ?";
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE " + id + " = ?";
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(id));
         Executor<Product> executor = new Executor<>();

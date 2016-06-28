@@ -1,4 +1,4 @@
-package daoTest;
+package daoTest.proguct;
 
 import controller.dao.FactoryDAO;
 import controller.dao.ProductDAO;

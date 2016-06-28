@@ -1,4 +1,4 @@
-package daoTest;
+package daoTest.proguct;
 
 import controller.dao.oracle.Connector;
 import java.sql.Connection;
