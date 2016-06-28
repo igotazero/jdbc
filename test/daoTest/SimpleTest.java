@@ -1,4 +1,4 @@
-package daoTest.proguct;
+package daoTest;
 
 import controller.dao.oracle.ParseHandler;
 

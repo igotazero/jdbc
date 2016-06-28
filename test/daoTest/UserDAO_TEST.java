@@ -1,4 +1,4 @@
-package daoTest.user;
+package daoTest;
 
 import controller.dao.FactoryDAO;
 import controller.dao.UserDAO;

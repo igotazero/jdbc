@@ -18,6 +18,7 @@ public class OracleUserDAO implements UserDAO {
     private final String PASSWORD = "PASSWORD";
     private final String NAME = "NAME";
     private final String ADDRESS = "ADDRESS";
+    private final Executor<User> executor = new Executor<>();
 
     private ResultHandler<User> userResultHandler = new ResultHandler<User>() {
         @Override
@@ -54,8 +55,6 @@ public class OracleUserDAO implements UserDAO {
         args.add(user.getPassword());
         args.add(user.getName());
         args.add(user.getAddress());
-
-        Executor<Product> executor = new Executor<>();
         return executor.execUpdate(query.toString(), args);
     }
 
@@ -64,7 +63,6 @@ public class OracleUserDAO implements UserDAO {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + LOGIN + " = ?";
         List<String> args = new ArrayList<>();
         args.add(login);
-        Executor<User> executor = new Executor<>();
         List<User> res = executor.execQuery(query, args, userResultHandler);
         if (!res.isEmpty()) {
             return res.get(0);
@@ -86,8 +84,6 @@ public class OracleUserDAO implements UserDAO {
         args.add(user.getName());
         args.add(user.getAddress());
         args.add(user.getLogin());
-
-        Executor<User> executor = new Executor<>();
         return executor.execUpdate(query.toString(), args);
     }
 
@@ -96,7 +92,6 @@ public class OracleUserDAO implements UserDAO {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + LOGIN + " = ?";
         List<String> args = new ArrayList<>();
         args.add(login);
-        Executor<User> executor = new Executor<>();
         return executor.execUpdate(query, args);
     }
 }

@@ -24,6 +24,7 @@ public class OracleProductDAO implements ProductDAO {
     private final String HOURS = "HOURS";
     private final String START_BIDDING_DATE = "STARTBIDDINGDATE";
     private final String BUY_NOW = "BUYNOW";
+    private final Executor<Product> executor = new Executor<>();
 
     private ResultHandler<Product> productResultHandler = new ResultHandler<Product>() {
         @Override
@@ -80,14 +81,12 @@ public class OracleProductDAO implements ProductDAO {
         args.add(ParseHandler.dateToString(product.getStartBiddingDate()));
         args.add(Integer.toString(ParseHandler.convert(product.isBuyNow())));
         args.add(Integer.toString(product.getId()));
-        Executor<Product> executor = new Executor<>();
         return executor.execUpdate(query.toString(), args);
     }
 
     @Override
     public Product get(int id) {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + id + " = ?";
-        Executor<Product> executor = new Executor<>();
         List<String> args = new ArrayList<String>();
         args.add(Integer.toString(id));
         List<Product> res = executor.execQuery(query, args, productResultHandler);
@@ -122,14 +121,12 @@ public class OracleProductDAO implements ProductDAO {
         args.add(Double.toString(product.getGap()));
         args.add(Integer.toString(product.getHours()));
         args.add(Integer.toString(ParseHandler.convert(product.isBuyNow())));
-        Executor<Product> executor = new Executor<>();
         return executor.execUpdate(query.toString(), args);
     }
 
     @Override
     public List<Product> getAll(){
         String query = "SELECT * FROM " + TABLE_NAME;
-        Executor<Product> executor = new Executor<>();
         List<Product> result = executor.execQuery(query, null, productResultHandler);
         return result;
     }
@@ -139,7 +136,6 @@ public class OracleProductDAO implements ProductDAO {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + id + " = ?";
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(id));
-        Executor<Product> executor = new Executor<>();
         return executor.execUpdate(query, args);
     }
 }
