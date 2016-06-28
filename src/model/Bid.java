@@ -40,4 +40,9 @@ public class Bid {
     public void setBid(double bid) {
         this.bid = bid;
     }
+
+    @Override
+    public String toString() {
+        return id + " | " + userLogin + " | " + productId + " | " + bid;
+    }
 }
