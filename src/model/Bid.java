@@ -45,4 +45,36 @@ public class Bid {
     public String toString() {
         return id + " | " + userLogin + " | " + productId + " | " + bid;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null){
+            return false;
+        }
+        if (this == obj){
+            return true;
+        }
+        if (getClass() != obj.getClass()){
+            return false;
+        }
+        Bid bid = (Bid)obj;
+        if (id != bid.getId()){
+            return false;
+        }
+        if (!userLogin.equals(bid.getUserLogin())){
+            return false;
+        }
+        if (productId != bid.getProductId()){
+            return false;
+        }
+        if (this.bid != bid.getBid()){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id * userLogin.length() * productId;
+    }
 }

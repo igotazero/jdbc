@@ -92,4 +92,51 @@ public class Product {
         return id + " | " + sellerLogin + " | " + name + " | " + description + " | " + price +
                 " | " + gap + " | " + hours + " | " + ParseHandler.dateToString(startBiddingDate) + " | " + buyNow;
     }
+
+    @Override
+    public int hashCode() {
+        return id * sellerLogin.length() * name.length() * description.length();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null){
+            return false;
+        }
+        if (this == obj){
+            return true;
+        }
+        if (getClass() != obj.getClass()){
+            return false;
+        }
+        Product product = (Product)obj;
+        if (id != product.getId()){
+            return false;
+        }
+        if (!sellerLogin.equals(product.getSellerLogin())){
+            return false;
+        }
+        if (!name.equals(product.getName())){
+            return false;
+        }
+        if (!description.equals(product.getDescription())){
+            return false;
+        }
+        if (price != product.getPrice()){
+            return false;
+        }
+        if (gap != product.getGap()){
+            return false;
+        }
+        if (hours != product.getHours()){
+            return false;
+        }
+        if (!startBiddingDate.equals(product.getStartBiddingDate())){
+            return false;
+        }
+        if (buyNow != product.isBuyNow()){
+            return false;
+        }
+        return true;
+    }
 }
