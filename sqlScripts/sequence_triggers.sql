@@ -2,12 +2,6 @@ DROP SEQUENCE  users_seq;
 DROP SEQUENCE  products_seq;
 DROP SEQUENCE  bids_seq;
 /*SEQUENCES*/
-/*For Users*/
-CREATE SEQUENCE users_seq
-START WITH 1 
-INCREMENT BY 1 
-NOMAXVALUE;
-
 /*For Products*/
 CREATE SEQUENCE products_seq
 START WITH 1 

@@ -1,12 +1,21 @@
 package daoTest.jUnit;
 
+import controller.dao.DAOException;
 import controller.dao.FactoryDAO;
 import controller.dao.ProductDAO;
+import controller.dao.oracle.OracleProductDAO;
+import controller.dao.oracle.ParseHandler;
 import model.Product;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
+
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Andrei_Zanozin on 6/29/2016.
@@ -30,9 +39,38 @@ public class ProductDAO_TEST {
 
     /*5) Add products*/
     @Test
-    public void getAllProducts(){
-        Product mixer = new Product("koshi", "Mixer", "Just mixer to mix everything", 1500, 100, 24, false);
-        Product cola = new Product("koshi", "Coca-Cola", "If you want to drink", 50, 10, 24, false);
-        Product cat = new Product("perelmann", "Cat", "Black cat. To avenge the enemies.", 2000, 100, 24, false);
+    public void getAllProducts() throws DAOException{
+        Product mixer = new Product(111, "koshi", "Mixer", "Just mixer to mix everything", 1500, 100, 24, ParseHandler.stringToDate("2016-06-29 15:00:00"), false);
+        Product cola = new Product(112, "koshi", "Coca-Cola", "If you want to drink", 50, 10, 24, ParseHandler.stringToDate("2016-06-29 15:00:00"), false);
+        Product cat = new Product(113, "perelmann", "Cat", "Black cat. To avenge the enemies.", 2000, 100, 24, ParseHandler.stringToDate("2016-06-29 15:00:00"), false);
+
+        List<Product> res =  dao.getAll();
+        assertTrue(res.contains(mixer));
+        assertTrue(res.contains(cola));
+        assertTrue(res.contains(cat));
+    }
+
+    /*6) Search by substring*/
+    @Test
+    public void search_TEST() throws DAOException{
+        Product diesel = new Product();
+        diesel.setSellerLogin("riemann");
+        diesel.setName("Diesel generator");
+        diesel.setDescription("You want to be powerfull? By the diesel!");
+        diesel.setPrice(5600);
+        diesel.setGap(100);
+        diesel.setHours(24);
+        diesel.setBuyNow(false);
+        dao.add(diesel);
+
+        List<Product> res = dao.search("generator", OracleProductDAO.NAME);
+        Product product = null;
+        for(Product p : res){
+            if (p.getName().equals(diesel.getName())){
+                product = p;
+            }
+        }
+        assertTrue(product != null);
+        assertTrue(product.getDescription().equals(diesel.getDescription()));
     }
 }

@@ -15,17 +15,17 @@ import java.util.List;
  * Created by Andrei_Zanozin on 6/23/2016.
  */
 public class OracleProductDAO implements ProductDAO {
-    private final String TABLE_NAME = "Products";
-    private final String ID = "ID";
-    private final String SELLER_ID = "SELLERID";
-    private final String NAME = "NAME";
-    private final String DESCRIPTION = "DESCRIPTION";
-    private final String PRICE = "PRICE";
-    private final String GAP = "GAP";
-    private final String HOURS = "HOURS";
-    private final String START_BIDDING_DATE = "STARTBIDDINGDATE";
-    private final String BUY_NOW = "BUYNOW";
-    private final Executor<Product> executor = new Executor<>();
+    public static final String TABLE_NAME = "Products";
+    public static final String ID = "ID";
+    public static final String SELLER_ID = "SELLERID";
+    public static final String NAME = "NAME";
+    public static final String DESCRIPTION = "DESCRIPTION";
+    public static final String PRICE = "PRICE";
+    public static final String GAP = "GAP";
+    public static final String HOURS = "HOURS";
+    public static final String START_BIDDING_DATE = "STARTBIDDINGDATE";
+    public static final String BUY_NOW = "BUYNOW";
+    private static final Executor<Product> executor = new Executor<>();
 
     private ResultHandler<Product> productResultHandler = new ResultHandler<Product>() {
         @Override
@@ -138,5 +138,20 @@ public class OracleProductDAO implements ProductDAO {
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(id));
         return executor.execUpdate(query, args);
+    }
+
+    @Override
+    public List<Product> search(String subject, String attribute) throws DAOException {
+        subject = subject.trim();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE "
+                + attribute + " LIKE ? OR "
+                + attribute + " LIKE lower(?) OR "
+                + attribute + " LIKE upper(?)";
+        List<String> args = new ArrayList<>();
+        String argument = "%" + subject + "%";
+        for (int i = 0; i < 3; i++) {
+            args.add(argument);
+        }
+        return executor.execQuery(query, args, productResultHandler);
     }
 }
