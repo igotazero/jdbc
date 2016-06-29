@@ -11,7 +11,8 @@ public class Bid {
 
     public Bid(){}
 
-    public Bid(String userLogin, int productId, double bid) {
+    public Bid(int id, String userLogin, int productId, double bid) {
+        this.id = id;
         this.userLogin = userLogin;
         this.productId = productId;
         this.bid = bid;

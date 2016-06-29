@@ -31,6 +31,8 @@ public class ProductDAO_TEST {
     /*5) Add products*/
     @Test
     public void getAllProducts(){
-        Product mixer = new Product();
+        Product mixer = new Product("koshi", "Mixer", "Just mixer to mix everything", 1500, 100, 24, false);
+        Product cola = new Product("koshi", "Coca-Cola", "If you want to drink", 50, 10, 24, false);
+        Product cat = new Product("perelmann", "Cat", "Black cat. To avenge the enemies.", 2000, 100, 24, false);
     }
 }

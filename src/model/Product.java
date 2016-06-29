@@ -16,7 +16,8 @@ public class Product {
 
     public Product(){}
 
-    public Product(String sellerLogin, String name, String description, double price, double gap, int hours, Date startBiddingDate, boolean buyNow) {
+    public Product(int id, String sellerLogin, String name, String description, double price, double gap, int hours, Date startBiddingDate, boolean buyNow) {
+        this.id = id;
         this.sellerLogin = sellerLogin;
         this.name = name;
         this.description = description;
