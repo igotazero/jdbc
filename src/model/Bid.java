@@ -9,6 +9,14 @@ public class Bid {
     private int productId;
     private double bid;
 
+    public Bid(){}
+
+    public Bid(String userLogin, int productId, double bid) {
+        this.userLogin = userLogin;
+        this.productId = productId;
+        this.bid = bid;
+    }
+
     public int getId() {
         return id;
     }

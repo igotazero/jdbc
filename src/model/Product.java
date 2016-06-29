@@ -14,6 +14,19 @@ public class Product {
     private Date startBiddingDate;
     private boolean buyNow;
 
+    public Product(){}
+
+    public Product(String sellerLogin, String name, String description, double price, double gap, int hours, Date startBiddingDate, boolean buyNow) {
+        this.sellerLogin = sellerLogin;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.gap = gap;
+        this.hours = hours;
+        this.startBiddingDate = startBiddingDate;
+        this.buyNow = buyNow;
+    }
+
     public int getId() {
         return id;
     }
