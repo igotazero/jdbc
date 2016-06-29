@@ -1,5 +1,6 @@
 package controller.dao.oracle;
 
+import controller.dao.DAOException;
 import controller.dao.ResultHandler;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,8 +11,8 @@ import java.util.List;
 /**
  * Created by Andrei_Zanozin on 6/23/2016.
  */
-public class Executor<T> {
-    public int execUpdate(String query, List<String> args){
+public class Executor<T>  {
+    public int execUpdate(String query, List<String> args) throws DAOException{
         try(Connection connection = Connector.getConnection()) {
             if (connection != null) {
                 PreparedStatement statement = connection.prepareStatement(query);
@@ -21,12 +22,11 @@ public class Executor<T> {
                 return 0;
             }
         }catch (SQLException e){
-            e.printStackTrace();
-            return 0;
+            throw new DAOException("Failed update table", e);
         }
     }
 
-    public List<T> execQuery(String query, List<String> args, ResultHandler<T> resultHandler){
+    public List<T> execQuery(String query, List<String> args, ResultHandler<T> resultHandler) throws DAOException{
         try(Connection connection = Connector.getConnection()) {
             if (connection != null) {
                 PreparedStatement statement = connection.prepareStatement(query);
@@ -37,8 +37,7 @@ public class Executor<T> {
                 return null;
             }
         }catch (SQLException e){
-            e.printStackTrace();
-            return null;
+            throw new DAOException("Failed getting query", e);
         }
     }
 

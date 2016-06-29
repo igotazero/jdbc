@@ -1,6 +1,7 @@
 package controller.dao.oracle;
 
 import controller.dao.BidDAO;
+import controller.dao.DAOException;
 import controller.dao.ResultHandler;
 import model.Bid;
 import java.sql.ResultSet;
@@ -40,7 +41,7 @@ public class OracleBidDAO implements BidDAO{
     };
 
     @Override
-    public int add(Bid bid) {
+    public int add(Bid bid) throws DAOException {
         StringBuilder query = new StringBuilder();
         query.append("INSERT INTO ").append(TABLE_NAME).append(" (")
                 .append(ID).append(", ")
@@ -56,7 +57,7 @@ public class OracleBidDAO implements BidDAO{
     }
 
     @Override
-    public List<Bid> getByProduct(int productId) {
+    public List<Bid> getByProduct(int productId) throws DAOException {
         String query  = "SELECT * FROM " + TABLE_NAME + " WHERE " + PRODUCT_ID + " = ?";
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(productId));
@@ -64,7 +65,7 @@ public class OracleBidDAO implements BidDAO{
     }
 
     @Override
-    public List<Bid> getByUser(String userLogin) {
+    public List<Bid> getByUser(String userLogin) throws DAOException {
         String query  = "SELECT * FROM " + TABLE_NAME + " WHERE " + USER_LOGIN + " = ?";
         List<String> args = new ArrayList<>();
         args.add(userLogin);
@@ -72,7 +73,7 @@ public class OracleBidDAO implements BidDAO{
     }
 
     @Override
-    public int remove(int id) {
+    public int remove(int id) throws DAOException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + ID + " = ?";
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(id));
@@ -80,7 +81,7 @@ public class OracleBidDAO implements BidDAO{
     }
 
     @Override
-    public int removeByUser(String userLogin) {
+    public int removeByUser(String userLogin) throws DAOException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + USER_LOGIN + " = ?";
         List<String> args = new ArrayList<>();
         args.add(userLogin);
@@ -88,7 +89,7 @@ public class OracleBidDAO implements BidDAO{
     }
 
     @Override
-    public int removeByProduct(int productId) {
+    public int removeByProduct(int productId) throws DAOException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + PRODUCT_ID + " = ?";
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(productId));
@@ -96,7 +97,7 @@ public class OracleBidDAO implements BidDAO{
     }
 
     @Override
-    public Bid getGreatestByProduct(int productId) {
+    public Bid getGreatestByProduct(int productId) throws DAOException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " +
                 BID + " IN (SELECT MAX(" + BID + ") FROM " + TABLE_NAME + ") AND " +
                 PRODUCT_ID + " = ?";

@@ -1,5 +1,6 @@
 package controller.dao.oracle;
 
+import controller.dao.DAOException;
 import controller.dao.ProductDAO;
 import controller.dao.ResultHandler;
 import model.Product;
@@ -58,7 +59,7 @@ public class OracleProductDAO implements ProductDAO {
     };
 
     @Override
-    public int update(Product product) {
+    public int update(Product product) throws DAOException {
         StringBuilder query = new StringBuilder();
         query.append("UPDATE ").append(TABLE_NAME).append(" SET ");
         query.append(SELLER_ID).append(" = ?, ");
@@ -85,7 +86,7 @@ public class OracleProductDAO implements ProductDAO {
     }
 
     @Override
-    public Product get(int id) {
+    public Product get(int id) throws DAOException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + id + " = ?";
         List<String> args = new ArrayList<String>();
         args.add(Integer.toString(id));
@@ -98,7 +99,7 @@ public class OracleProductDAO implements ProductDAO {
     }
 
     @Override
-    public int add(Product product){
+    public int add(Product product) throws DAOException{
         StringBuilder query = new StringBuilder();
         query.append("INSERT INTO ").append(TABLE_NAME);
         query.append(" (")
@@ -125,14 +126,14 @@ public class OracleProductDAO implements ProductDAO {
     }
 
     @Override
-    public List<Product> getAll(){
+    public List<Product> getAll() throws DAOException{
         String query = "SELECT * FROM " + TABLE_NAME;
         List<Product> result = executor.execQuery(query, null, productResultHandler);
         return result;
     }
 
     @Override
-    public int remove(int id) {
+    public int remove(int id) throws DAOException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + id + " = ?";
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(id));

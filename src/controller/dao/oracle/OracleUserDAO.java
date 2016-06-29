@@ -1,5 +1,6 @@
 package controller.dao.oracle;
 
+import controller.dao.DAOException;
 import controller.dao.ResultHandler;
 import controller.dao.UserDAO;
 import model.Product;
@@ -42,7 +43,7 @@ public class OracleUserDAO implements UserDAO {
     };
 
     @Override
-    public int add(User user) {
+    public int add(User user) throws DAOException {
         StringBuilder query = new StringBuilder();
         query.append("INSERT INTO ").append(TABLE_NAME).append(" (")
                 .append(LOGIN).append(", ")
@@ -59,7 +60,7 @@ public class OracleUserDAO implements UserDAO {
     }
 
     @Override
-    public User get(String login) {
+    public User get(String login) throws DAOException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + LOGIN + " = ?";
         List<String> args = new ArrayList<>();
         args.add(login);
@@ -72,12 +73,12 @@ public class OracleUserDAO implements UserDAO {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> getAll() throws DAOException {
         String query = "SELECT * FROM " + TABLE_NAME;
         return executor.execQuery(query, null, userResultHandler);
     }
 
-    public int update(User user){
+    public int update(User user) throws DAOException{
         StringBuilder query = new StringBuilder();
         query.append("UPDATE ").append(TABLE_NAME).append(" SET ")
                 .append(PASSWORD).append(" = ?, ")
@@ -94,7 +95,7 @@ public class OracleUserDAO implements UserDAO {
     }
 
     @Override
-    public int remove(String login) {
+    public int remove(String login) throws DAOException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + LOGIN + " = ?";
         List<String> args = new ArrayList<>();
         args.add(login);
