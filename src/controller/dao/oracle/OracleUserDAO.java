@@ -68,7 +68,7 @@ public class OracleUserDAO implements UserDAO {
         if (!res.isEmpty()) {
             return res.get(0);
         } else {
-            return null;
+            throw new DAOException("Login does not exist", new Exception());
         }
     }
 

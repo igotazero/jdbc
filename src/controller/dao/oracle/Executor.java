@@ -2,10 +2,7 @@ package controller.dao.oracle;
 
 import controller.dao.DAOException;
 import controller.dao.ResultHandler;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -21,7 +18,11 @@ public class Executor<T>  {
             }else {
                 return 0;
             }
+        }catch (SQLIntegrityConstraintViolationException e){
+            throw new DAOException("Unique constraint violated", e);
+
         }catch (SQLException e){
+            e.printStackTrace();
             throw new DAOException("Failed update table", e);
         }
     }
@@ -37,6 +38,7 @@ public class Executor<T>  {
                 return null;
             }
         }catch (SQLException e){
+            e.printStackTrace();
             throw new DAOException("Failed getting query", e);
         }
     }
