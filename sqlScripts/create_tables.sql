@@ -31,4 +31,5 @@ productId INT NOT NULL,
 bid NUMBER NOT NULL,
 PRIMARY KEY (id),
 FOREIGN KEY (userLogin) REFERENCES Users (login),
-FOREIGN KEY (productId) REFERENCES Products (id));
+FOREIGN KEY (productId) REFERENCES Products (id),
+CONSTRAINT unique_bid_string UNIQUE (userLogin, productId, bid));

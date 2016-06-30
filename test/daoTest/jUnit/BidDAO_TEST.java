@@ -8,6 +8,7 @@ import controller.dao.oracle.OracleProductDAO;
 import controller.dao.oracle.ParseHandler;
 import model.Bid;
 import model.Product;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -110,12 +111,13 @@ public class BidDAO_TEST {
     @Test
     public void addExistentBid() throws DAOException{
         thrown.expect(DAOException.class);
+        thrown.expectMessage("Unique constraint violated");
         List<Bid> res = dao.getAll();
         Bid bid = null;
         if (!res.isEmpty()){
             bid = res.get(0);
         }else {
-            System.out.println("No bids in DB");
+            assert true;
         }
         dao.add(bid);
     }
