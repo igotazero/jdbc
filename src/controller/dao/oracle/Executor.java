@@ -2,13 +2,18 @@ package controller.dao.oracle;
 
 import controller.dao.DAOException;
 import controller.dao.ResultHandler;
+import org.apache.log4j.Logger;
+
 import java.sql.*;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Andrei_Zanozin on 6/23/2016.
  */
 public class Executor<T>  {
+    private static final Logger log = Logger.getLogger(Executor.class);
+
     public int execUpdate(String query, List<String> args) throws DAOException{
         try(Connection connection = Connector.getConnection()) {
             if (connection != null) {
@@ -19,10 +24,10 @@ public class Executor<T>  {
                 return 0;
             }
         }catch (SQLIntegrityConstraintViolationException e){
+            toLog(e);
             throw new DAOException("Unique constraint violated", e);
-
         }catch (SQLException e){
-            e.printStackTrace();
+            toLog(e);
             throw new DAOException("Failed update table", e);
         }
     }
@@ -38,7 +43,7 @@ public class Executor<T>  {
                 return null;
             }
         }catch (SQLException e){
-            e.printStackTrace();
+            toLog(e);
             throw new DAOException("Failed getting query", e);
         }
     }
@@ -49,5 +54,9 @@ public class Executor<T>  {
                 statement.setString(i, args.get(i - 1));
             }
         }
+    }
+
+    private void toLog(Exception e){
+        log.error(e.getMessage() + " // " + Arrays.toString(e.getStackTrace()));
     }
 }
