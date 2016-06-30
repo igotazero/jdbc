@@ -4,6 +4,8 @@ import controller.dao.DAOException;
 import controller.dao.ProductDAO;
 import controller.dao.ResultHandler;
 import model.Product;
+import model.User;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -153,5 +155,14 @@ public class OracleProductDAO implements ProductDAO {
             args.add(argument);
         }
         return executor.execQuery(query, args, productResultHandler);
+    }
+
+    public int changeOwner(int productID, String newOwner) throws DAOException{
+        String query = "UPDATE " + TABLE_NAME + " SET " + SELLER_ID + " = ? WHERE " +
+                ID + " = ?";
+        List<String> args = new ArrayList<>();
+        args.add(newOwner);
+        args.add(Integer.toString(productID));
+        return executor.execUpdate(query, args);
     }
 }

@@ -3,7 +3,11 @@ package daoTest.jUnit;
 import controller.dao.BidDAO;
 import controller.dao.DAOException;
 import controller.dao.FactoryDAO;
+import controller.dao.ProductDAO;
+import controller.dao.oracle.OracleProductDAO;
+import controller.dao.oracle.ParseHandler;
 import model.Bid;
+import model.Product;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
@@ -44,5 +48,49 @@ public class BidDAO_TEST {
         assertTrue(res.contains(three));
     }
 
-    
+    /*11. Change owner*/
+    @Test
+    public void changeOwner_TEST() throws DAOException{
+        Product sun = new Product(0, "riemann", "Sun", "If you want some light in your life", 1500, 100, 24, ParseHandler.stringToDate("2016-06-29 15:00:00"), false);
+        ProductDAO productDAO = FactoryDAO.getConcreteFactory(FactoryDAO.CURRENT_SOURCE).getProductDAO();
+        List<Product> res = productDAO.search("Sun", OracleProductDAO.NAME);
+        Product product;
+        if (res.isEmpty()){
+            productDAO.add(sun);
+            changeOwner_TEST();
+        }else {
+            product = res.get(0);
+            Bid best = dao.getGreatestByProduct(product.getId());
+            if (best != null){
+                productDAO.changeOwner(product.getId(), best.getUserLogin());
+                Product change = productDAO.get(product.getId());
+                if (change.getSellerLogin().equals(best.getUserLogin())){
+                    assert true;
+                }
+            }
+        }
+    }
+
+    /*12. Add Bid*/
+    @Test
+    public void addBid() throws DAOException{
+        Bid anyBid = new Bid(0, "koshi", 9, 2000);
+        dao.add(anyBid);
+        List<Bid> res = dao.getAll();
+        for (Bid b : res){
+            if (b.getUserLogin().equals(anyBid.getUserLogin())
+                    && b.getProductId() == anyBid.getProductId()
+                    && b.getBid() == anyBid.getBid()){
+                assert true;
+            }
+        }
+    }
+
+    /*13. Best Bid*/
+    @Test
+    public void getBestBid_TEST() throws DAOException{
+        Bid bestBid = new Bid(116, "koshi", 9, 2200);
+        Bid res = dao.getGreatestByProduct(9);
+        assertTrue(res.equals(bestBid));
+    }
 }
