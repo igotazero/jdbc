@@ -8,7 +8,6 @@ import controller.dao.oracle.OracleProductDAO;
 import controller.dao.oracle.ParseHandler;
 import model.Bid;
 import model.Product;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,12 +20,12 @@ import java.util.List;
 /**
  * Created by Andrei_Zanozin on 6/30/2016.
  */
-public class BidDAO_TEST {
+public class BidDAOTest {
     BidDAO dao;
 
     public static void main(String[] args) {
         JUnitCore runner = new JUnitCore();
-        Result result = runner.run(BidDAO_TEST.class);
+        Result result = runner.run(BidDAOTest.class);
         System.out.println("run tests: " + result.getRunCount());
         System.out.println("failed tests: " + result.getFailureCount());
         System.out.println("ignored tests: " + result.getIgnoreCount());

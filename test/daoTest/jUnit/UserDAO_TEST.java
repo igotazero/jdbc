@@ -39,6 +39,7 @@ public class UserDAO_TEST {
 
     @Before
     public void init(){
+        BasicConfigurator.configure();
         dao = FactoryDAO.getConcreteFactory(FactoryDAO.CURRENT_SOURCE).getUserDAO();
     }
 
