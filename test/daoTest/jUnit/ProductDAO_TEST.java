@@ -73,4 +73,25 @@ public class ProductDAO_TEST {
         assertTrue(product != null);
         assertTrue(product.getDescription().equals(diesel.getDescription()));
     }
+
+    /*7) Search by product ID*/
+
+    @Test
+    public void search_by_id_TEST() throws DAOException{
+        Product table = new Product(114, "koshi", "Table", "Just table", 1650, 50, 24, ParseHandler.stringToDate("2016-06-29 15:00:00"), true);
+        Product res = dao.get(114);
+        assertTrue(res.equals(table));
+    }
+
+    /*8) Search Product by seller*/
+    @Test
+    public void search_by_seller_TEST() throws DAOException{
+        Product table = new Product(115, "agent", "Table", "Nothing", 1650, 50, 24, ParseHandler.stringToDate("2016-06-29 15:00:00"), true);
+        Product product = dao.search("agent", OracleProductDAO.SELLER_ID).get(0);
+        if (product != null){
+            assertTrue(product.equals(table));
+        }
+    }
+
+    
 }

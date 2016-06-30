@@ -87,7 +87,7 @@ public class OracleProductDAO implements ProductDAO {
 
     @Override
     public Product get(int id) throws DAOException {
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + id + " = ?";
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = ?";
         List<String> args = new ArrayList<String>();
         args.add(Integer.toString(id));
         List<Product> res = executor.execQuery(query, args, productResultHandler);
