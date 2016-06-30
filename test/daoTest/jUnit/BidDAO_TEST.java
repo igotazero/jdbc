@@ -9,7 +9,9 @@ import controller.dao.oracle.ParseHandler;
 import model.Bid;
 import model.Product;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import static org.junit.Assert.assertTrue;
@@ -29,6 +31,9 @@ public class BidDAO_TEST {
         System.out.println("ignored tests: " + result.getIgnoreCount());
         System.out.println("success: " + result.wasSuccessful());
     }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Before
     public void init(){
@@ -92,5 +97,26 @@ public class BidDAO_TEST {
         Bid bestBid = new Bid(116, "koshi", 9, 2200);
         Bid res = dao.getGreatestByProduct(9);
         assertTrue(res.equals(bestBid));
+    }
+
+    /*---Additional tests ---*/
+
+    @Test
+    public void getNonexistentBid() throws DAOException{
+        assertTrue(dao.getByUser("nan").isEmpty());
+        assertTrue(dao.getByProduct(666666666).isEmpty());
+    }
+
+    @Test
+    public void addExistentBid() throws DAOException{
+        thrown.expect(DAOException.class);
+        List<Bid> res = dao.getAll();
+        Bid bid = null;
+        if (!res.isEmpty()){
+            bid = res.get(0);
+        }else {
+            System.out.println("No bids in DB");
+        }
+        dao.add(bid);
     }
 }
