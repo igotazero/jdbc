@@ -10,12 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
-
-import java.util.Date;
 import java.util.List;
-
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+
 
 /**
  * Created by Andrei_Zanozin on 6/29/2016.
@@ -93,5 +90,34 @@ public class ProductDAO_TEST {
         }
     }
 
-    
+    @Test
+    public void add_new_Product() throws DAOException{
+        Product soap = new Product(0, "agent", "Soap", "To wash", 40, 0, 24, ParseHandler.stringToDate("2016-06-29 15:00:00"), true);
+        List<Product> res = dao.getAll();
+        Product product = null;
+        for (Product p : res){
+            if (p.getName().equals(soap.getName()) && p.getSellerLogin().equals(soap.getSellerLogin())){
+                product = p;
+                break;
+            }
+        }
+        if (product == null) {
+            dao.add(soap);
+            res = dao.getAll();
+            for (Product p : res) {
+                if (p.getName().equals(soap.getName()) && p.getSellerLogin().equals(soap.getSellerLogin())) {
+                    product = p;
+                    break;
+                }
+            }
+        }
+        if (product != null){
+            assertTrue(product.getPrice() == soap.getPrice());
+            assertTrue(product.getGap() == soap.getGap());
+            assertTrue(product.getDescription().equals(soap.getDescription()));
+            assertTrue(product.isBuyNow() == soap.isBuyNow());
+        }
+    }
+
+
 }

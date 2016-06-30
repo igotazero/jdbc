@@ -12,4 +12,5 @@ public interface BidDAO {
     List<Bid> getByProduct(int productId) throws DAOException;
     List<Bid> getByUser(String userLogin) throws DAOException;
     Bid getGreatestByProduct(int productId) throws DAOException;
+    List<Bid> getAll() throws DAOException;
 }

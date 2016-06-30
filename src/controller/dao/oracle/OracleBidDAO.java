@@ -110,4 +110,10 @@ public class OracleBidDAO implements BidDAO{
             return null;
         }
     }
+
+    @Override
+    public List<Bid> getAll() throws DAOException {
+        String query = "SELECT * FROM " + TABLE_NAME;
+        return executor.execQuery(query, null, bidResultHandler);
+    }
 }
