@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in &middot; Marketplace</title>
+	<link href="../css/login.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../tools/validation/css/validationEngine.jquery.css">
+
+	<script type="text/javascript">
+            jQuery(document).ready(function(){
+                jQuery("#formID").validationEngine();
+            });
+    </script>
+</head>
+<body>
+	<div class="parent">
+		<div class="panel">
+			<div class="item"><a href="http://www.yandex.ru">Bord</a></div>
+		</div>
+		<div class="block">
+			<div class="frame">
+				<img src="../res/images/logo.png">
+				<form id="formID">
+					<p><input class="validate[required]" type="text" name="login" placeholder="login"></p>
+					<p><input class="validate[required]" type="password" name="password" placeholder="password"></p>
+					<button type="submit">Sign in</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
