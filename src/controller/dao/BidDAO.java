@@ -1,7 +1,6 @@
 package controller.dao;
 
 import model.Bid;
-
 import java.util.List;
 
 public interface BidDAO {

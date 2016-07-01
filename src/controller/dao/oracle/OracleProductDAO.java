@@ -4,8 +4,6 @@ import controller.dao.DAOException;
 import controller.dao.ProductDAO;
 import controller.dao.ResultHandler;
 import model.Product;
-import model.User;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -31,7 +29,7 @@ public class OracleProductDAO implements ProductDAO {
 
     private ResultHandler<Product> productResultHandler = new ResultHandler<Product>() {
         @Override
-        public List<Product> convert(ResultSet resultSet) {
+        public List<Product> convert(ResultSet resultSet) throws DAOException {
             List<Product> list = new ArrayList<>();
             try {
                 while(resultSet.next()){
@@ -53,8 +51,7 @@ public class OracleProductDAO implements ProductDAO {
                     list.add(product);
                 }
             }catch (SQLException e){
-                e.printStackTrace();
-                return null;
+                throw new DAOException("Reading from the database error", e);
             }
             return list;
         }

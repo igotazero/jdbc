@@ -3,7 +3,6 @@ package controller.dao.oracle;
 import controller.dao.DAOException;
 import controller.dao.ResultHandler;
 import org.apache.log4j.Logger;
-
 import java.sql.*;
 import java.util.Arrays;
 import java.util.List;

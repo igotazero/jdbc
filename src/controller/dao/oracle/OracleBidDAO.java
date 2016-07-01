@@ -21,7 +21,7 @@ public class OracleBidDAO implements BidDAO{
     private final Executor<Bid> executor = new Executor<>();
     private ResultHandler<Bid> bidResultHandler = new ResultHandler<Bid>() {
         @Override
-        public List<Bid> convert(ResultSet resultSet) {
+        public List<Bid> convert(ResultSet resultSet) throws DAOException {
             List<Bid> list = new ArrayList<>();
             try {
                 while(resultSet.next()){
@@ -33,8 +33,7 @@ public class OracleBidDAO implements BidDAO{
                     list.add(bid);
                 }
             }catch (SQLException e){
-                e.printStackTrace();
-                return null;
+                throw new DAOException("Reading from the database error", e);
             }
             return list;
         }

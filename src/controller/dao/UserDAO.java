@@ -1,7 +1,6 @@
 package controller.dao;
 
 import model.User;
-
 import java.util.List;
 
 /**

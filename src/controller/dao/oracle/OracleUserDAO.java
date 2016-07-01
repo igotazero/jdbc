@@ -3,7 +3,6 @@ package controller.dao.oracle;
 import controller.dao.DAOException;
 import controller.dao.ResultHandler;
 import controller.dao.UserDAO;
-import model.Product;
 import model.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +22,7 @@ public class OracleUserDAO implements UserDAO {
 
     private ResultHandler<User> userResultHandler = new ResultHandler<User>() {
         @Override
-        public List<User> convert(ResultSet resultSet) {
+        public List<User> convert(ResultSet resultSet) throws DAOException {
             List<User> list = new ArrayList<>();
             try {
                 while (resultSet.next()) {
@@ -35,8 +34,7 @@ public class OracleUserDAO implements UserDAO {
                     list.add(user);
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
-                return null;
+                throw new DAOException("Reading from the database error", e);
             }
             return list;
         }

@@ -1,7 +1,6 @@
 package controller.dao;
 
 import model.Product;
-
 import java.util.List;
 
 /**

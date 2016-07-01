@@ -82,7 +82,7 @@ public class UserDAO_TEST {
     }
 
     @Test
-    public void getNonexistentLogun_TEST() throws DAOException{
+    public void getNonexistentLogin_TEST() throws DAOException{
         thrown.expect(DAOException.class);
         thrown.expectMessage("Login does not exist");
         User res = dao.get("login");
