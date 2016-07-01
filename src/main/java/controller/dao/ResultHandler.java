@@ -1,4 +1,4 @@
-package controller.dao;
+package main.java.controller.dao;
 
 import java.sql.ResultSet;
 import java.util.List;

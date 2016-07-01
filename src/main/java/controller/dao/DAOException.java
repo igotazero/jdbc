@@ -1,4 +1,4 @@
-package controller.dao;
+package main.java.controller.dao;
 
 /**
  * Created by Andrei_Zanozin on 6/29/2016.

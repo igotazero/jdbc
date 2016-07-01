@@ -1,6 +1,6 @@
-package controller.dao;
+package main.java.controller.dao;
 
-import controller.dao.oracle.OracleFactoryDAO;
+import main.java.controller.dao.oracle.OracleFactoryDAO;
 
 public abstract class FactoryDAO {
     public static final int ORACLE = 0;

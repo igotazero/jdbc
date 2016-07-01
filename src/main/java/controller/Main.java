@@ -1,4 +1,4 @@
-package controller;
+package main.java.controller;
 
 import org.apache.log4j.BasicConfigurator;
 

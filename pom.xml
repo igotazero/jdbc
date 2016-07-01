@@ -39,7 +39,7 @@
                     <includeProjectDependencies>true</includeProjectDependencies>
                     <includePluginDependencies>true</includePluginDependencies>
                     <classpathScope>compile</classpathScope>
-                    <mainClass>${basedir}.src.controller.Main</mainClass>
+                    <mainClass>${basedir}.src.main.java.controller.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>

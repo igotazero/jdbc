@@ -1,6 +1,6 @@
-package controller.dao;
+package main.java.controller.dao;
 
-import model.Bid;
+import main.java.model.Bid;
 import java.util.List;
 
 public interface BidDAO {

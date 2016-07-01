@@ -1,9 +1,9 @@
-package controller.dao.oracle;
+package main.java.controller.dao.oracle;
 
-import controller.dao.BidDAO;
-import controller.dao.FactoryDAO;
-import controller.dao.ProductDAO;
-import controller.dao.UserDAO;
+import main.java.controller.dao.BidDAO;
+import main.java.controller.dao.FactoryDAO;
+import main.java.controller.dao.ProductDAO;
+import main.java.controller.dao.UserDAO;
 
 public class OracleFactoryDAO extends FactoryDAO {
     @Override

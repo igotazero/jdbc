@@ -1,6 +1,6 @@
-package model;
+package main.java.model;
 
-import controller.dao.oracle.ParseHandler;
+import main.java.controller.dao.oracle.ParseHandler;
 import java.util.Date;
 
 public class Product {

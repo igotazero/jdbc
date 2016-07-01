@@ -1,6 +1,6 @@
-package controller.dao;
+package main.java.controller.dao;
 
-import model.Product;
+import main.java.model.Product;
 import java.util.List;
 
 /**

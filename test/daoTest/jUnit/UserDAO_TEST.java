@@ -1,11 +1,10 @@
 package daoTest.jUnit;
 
-import controller.dao.DAOException;
-import controller.dao.FactoryDAO;
-import controller.dao.UserDAO;
-import model.User;
+import main.java.controller.dao.DAOException;
+import main.java.controller.dao.FactoryDAO;
+import main.java.controller.dao.UserDAO;
+import main.java.model.User;
 import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.PropertyConfigurator;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,8 +12,6 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import static org.junit.Assert.*;

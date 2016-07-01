@@ -1,9 +1,9 @@
-package controller.dao.oracle;
+package main.java.controller.dao.oracle;
 
-import controller.dao.DAOException;
-import controller.dao.ProductDAO;
-import controller.dao.ResultHandler;
-import model.Product;
+import main.java.controller.dao.DAOException;
+import main.java.controller.dao.ProductDAO;
+import main.java.controller.dao.ResultHandler;
+import main.java.model.Product;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;

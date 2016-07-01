@@ -1,13 +1,13 @@
 package daoTest.jUnit;
 
-import controller.dao.BidDAO;
-import controller.dao.DAOException;
-import controller.dao.FactoryDAO;
-import controller.dao.ProductDAO;
-import controller.dao.oracle.OracleProductDAO;
-import controller.dao.oracle.ParseHandler;
-import model.Bid;
-import model.Product;
+import main.java.controller.dao.BidDAO;
+import main.java.controller.dao.DAOException;
+import main.java.controller.dao.FactoryDAO;
+import main.java.controller.dao.ProductDAO;
+import main.java.controller.dao.oracle.OracleProductDAO;
+import main.java.controller.dao.oracle.ParseHandler;
+import main.java.model.Bid;
+import main.java.model.Product;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
