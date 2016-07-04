@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Sign in &middot; Marketplace</title>
 	<link href="../css/welcompages.css" rel="stylesheet">
+	<link href="../css/login.css" rel="stylesheet">
+	<link href="../css/top_pannel.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../tools/validation/css/validationEngine.jquery.css">
 
 	<script type="text/javascript">
@@ -21,14 +23,18 @@
 			</div>
 		</div>
 		<div class="block">
-			<div class="frame">
-				<img src="../res/images/logo.png">
-				<form id="formID">
-					<p><input class="validate[required]" type="text" name="login" placeholder="login"></p>
-					<p><input class="validate[required]" type="password" name="password" placeholder="password"></p>
-					<button type="submit">Sign in</button>
+				<form id="formID" class="frame">
+					<img src="../res/images/logo.png">
+					<div class="form_row">
+						<div><input class="label orient margin validate[required]" type="text" name="login" placeholder="login"></div>
+					</div>
+					<div class="form_row">
+						<div><input class="label orient margin validate[required]" type="password" name="password" placeholder="password"></div>
+					</div>
+					<div class="form_row">
+						<button type="submit" class="orient margin">Log in</button>
+					</div>
 				</form>
-			</div>
 		</div>
 	</div>
 </body>

@@ -1,0 +1,32 @@
+.frame {
+	min-width: 400px;
+}
+
+.form_row {
+    text-align: right;
+    display: table-row;
+    clear:both;
+}
+
+.form_item {
+    float: left;
+    display: table-cell;
+}
+
+.form_input{
+    display: table-cell;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.txt {
+    display: table-cell;
+    min-width: 198px;
+    max-width: 198px;
+}
+
+.btn {
+    align-items: right;
+    justify-content: right;
+    overflow: auto;
+}
