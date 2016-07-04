@@ -34,24 +34,28 @@ body {
    }
 
 .panel {
-	display: table;
-	background: #2F4F4F; /* Цвет фона */
-    /* Set rules to fill background */
+	display: block;
+	background: #2F4F4F;
+	/*Size and position*/
     min-height: 40px;
     min-width: 100%;
-    /* Set up proportionate scaling */
     height: 40px;
     width: 100%;
-    /* Set up positioning */
     position: fixed;
     top: 0;
     left: 0;
 }
 
+.row{
+   	display: table-row;
+ }
+
 .item {
+	display: table-cell;
     vertical-align: middle;
    	padding-left: 15px;
-   	display: table-cell;
+   	padding-bottom: 10px;
+   	padding-top: 10px;
 }
 
 A {
