@@ -1,36 +1,36 @@
 .panel {
-	display: block;
+    display: block;
 	background: #2F4F4F;
-	/*Size and position*/
     min-height: 40px;
-    min-width: 100%;
+    max-height: 40px;
     height: 40px;
+    min-width: 100%;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
+    font-family: sans-serif;
+    font-size: 14px;
 }
 
-.row{
-   	display: table-row;
- }
-
- .item {
-    display: table-cell;
-    vertical-align: middle;
-    padding-left: 15px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+.item {
     color: white;
-}
-
-.logo_item {
-    display: table-cell;
-    vertical-align: middle;
+    padding-right: 10px;
     padding-left: 10px;
-    padding-top: 5px;
+    vertical-align: 20px;
+    margin: 11px;
 }
 
-.inverted {
-    -webkit-filter: invert(100%);
+.logo {
+    margin: 5px;
+}
+
+.right {
+    display: block;
+    float: right;
+}
+
+.left {
+    display: block;
+    float: left;
 }

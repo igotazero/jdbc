@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign in &middot; Marketplace</title>
-	<link href="../css/welcompages.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/top_pannel.css" rel="stylesheet">
 	<link href="../css/login.css" rel="stylesheet">
-	<link href="../css/top_pannel.css" rel="stylesheet">
-	<link href="../css/base.css" rel="stylesheet">
+	<link href="../css/form.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../tools/validation/css/validationEngine.jquery.css">
 
 	<script type="text/javascript">
@@ -16,13 +16,26 @@
     </script>
 </head>
 <body>
-	<div class="parent">
+	<div class="container">
 		<div class="panel">
-			<div class="row">
-				<div class="item"><a href="board.html">Bord</a></div>
-				<div class="item"><a href="registration.html">Registration</a></div>
+			<div id="left" class="item"><a href="board.html">Board</a></div>
+			<div id="left" class="item"><a href="registration.html">Registration</a></div>
+		</div>
+		<div class="background">
+			<img class="form_item form_left" src="../res/images/logo.png">
+			<div class="form_row">
+				<div>One</div>
+				<div><input class="validate[required]" type="text" name="login" placeholder="login"></div>
+			</div>
+			<div class="form_row">
+				<div>Text</div>
+				<div>Next</div>
 			</div>
 		</div>
+	</div>
+
+
+
 		<div class="block">
 				<form id="formID" class="frame">
 					<img src="../res/images/logo.png">
@@ -37,6 +50,5 @@
 					</div>
 				</form>
 		</div>
-	</div>
 </body>
 </html>

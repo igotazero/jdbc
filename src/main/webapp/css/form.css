@@ -1,0 +1,23 @@
+.container {
+	width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    overflow: auto;  
+}
+
+.background {
+	display: block;
+	background: #7297A1;
+	padding: 10px;
+}
+
+.form_row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
