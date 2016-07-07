@@ -1,32 +1,17 @@
-.frame {
-	min-width: 400px;
+.background {
+    width: 380px;
 }
 
-.form_row {
-    text-align: right;
-    display: table-row;
-    clear:both;
+h3 {
+    margin: 0;
 }
 
-.form_item {
-    float: left;
-    display: table-cell;
+input {
+    width: 200px;
 }
 
-.form_input{
-    display: table-cell;
-    min-width: 200px;
-    max-width: 200px;
-}
-
-.txt {
-    display: table-cell;
-    min-width: 198px;
+textarea {
+    width: 198px;
     max-width: 198px;
-}
-
-.btn {
-    align-items: right;
-    justify-content: right;
-    overflow: auto;
+    min-width: 198px;
 }

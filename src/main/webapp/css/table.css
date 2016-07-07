@@ -1,0 +1,33 @@
+table {
+	width: 100%;
+	font: 15px sans-serif;
+	font-weight: normal;
+	border-collapse:collapse;
+}
+
+tr#header {
+	background: #009999;
+}
+
+th {
+	font-weight: normal;
+}
+
+td {
+	text-align: center;
+}
+
+#tbody{
+	height:150px;
+}
+/*
+#id {width: 3%; 	}
+#name {width: 10%; }
+#description {width: 20%; }
+#price {width: 5%; 	}
+#gap {width: 5%; 	}
+#bid {width: 5%; 	}
+#bidder {width: 15%; }
+#stopdate {width: 10%; }
+#bidding {width: 20%; }
+*/

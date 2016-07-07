@@ -11,6 +11,7 @@
     left: 0;
     font-family: sans-serif;
     font-size: 14px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.3);
 }
 
 .item {
@@ -33,4 +34,17 @@
 .left {
     display: block;
     float: left;
+}
+
+
+A {
+    color: white; /* Цвет ссылок */
+}
+
+A:visited {
+    color: #cecece; /* Цвет посещенных ссылок */
+}
+
+A:active {
+    color: #ffff00; /* Цвет активных ссылок */
 }
