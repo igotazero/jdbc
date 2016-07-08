@@ -1,0 +1,32 @@
+div.table {
+	display: table;
+}
+
+div.row {
+	display: table-row;
+}
+
+div.cell {
+	display: table-cell;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+div.first {
+	padding-right: 40px;
+	color: grey;
+}
+
+div.money {
+	background-image: url("../res/images/back_money.png");
+	padding-left: 10px;
+}
+
+h3 {
+	display: inline-block;
+}
+
+a#nobr {
+	display: inline-block;
+	color: grey;
+}

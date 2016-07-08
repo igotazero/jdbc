@@ -5,12 +5,101 @@
     <title>Board &middot; Marketplace</title>
     <link href="../css/top_pannel.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/table.css" rel="stylesheet">
+    <link href="../css/board.css" rel="stylesheet">
 </head>
 <body>
 	<div class="panel">
-		<div class="logo left"><img src="../res/images/logo_main.png"></div>
-		<div class="item right"><a href="user_page.html">Andrew Zanozin</a></div>
+		<div class="image left"><img src="../res/images/logo_main.png"></div>
+		<div class="item left">|</div>
+		<div class="item left"><a href="add.html">Add product</a></div>
+		<div class="image right"><a href="login.html"><img src="../res/images/exit.png"></a></div>
+		<div class="item right"><a href="user_page.html">qwerty</a></div>
 		<div class="item right">$ 1.000.000</div>
+	</div>
+	<div class="cover">
+		<div class="border">
+			Find products
+			<form id="span">
+				<input id="search" type="text" name="find"/>
+				by
+				<select name="select">
+					<option>ID</option>
+					<option>Name</option>
+					<option>Description</option>
+				</select>
+				<button type="submit">ok</button>
+			</form>
+		</div>
+		<h3 id="margin">Actual products</h3>
+		<table id="margin">
+			<tr id="header">
+				<th id="id">ID</th>
+				<th id="name">Name</th>
+				<th id="description">Description</th>
+				<th id="price">Price</th>
+				<th id="gap">Bid inc.</th>
+				<th id="bid">Best offer</th>
+				<th id="bidder">Bidder</th>
+				<th id="stopdate">Stop date</th>
+				<th id="bidding">Bidding</th>
+			</tr>
+			<tr>
+				<th id="id">ID</th>
+				<th id="name">Name</th>
+				<th id="description">Description</th>
+				<th id="price">Price</th>
+				<th id="gap">Bid inc.</th>
+				<th id="bid">Best offer</th>
+				<th id="bidder">Bidder</th>
+				<th id="stopdate">Stop date</th>
+				<th id="bidding">Bidding</th>
+			</tr>
+			<tr>
+				<th id="id">ID</th>
+				<th id="name">Name</th>
+				<th id="description">Description</th>
+				<th id="price">Price</th>
+				<th id="gap">Bid inc.</th>
+				<th id="bid">Best offer</th>
+				<th id="bidder">Bidder</th>
+				<th id="stopdate">Stop date</th>
+				<th id="bidding">Bidding</th>
+			</tr>
+			<tr>
+				<th id="id">ID</th>
+				<th id="name">Name</th>
+				<th id="description">Description</th>
+				<th id="price">Price</th>
+				<th id="gap">Bid inc.</th>
+				<th id="bid">Best offer</th>
+				<th id="bidder">Bidder</th>
+				<th id="stopdate">Stop date</th>
+				<th id="bidding">Bidding</th>
+			</tr>
+			<tr>
+				<th id="id">ID</th>
+				<th id="name">Name</th>
+				<th id="description">Description</th>
+				<th id="price">Price</th>
+				<th id="gap">Bid inc.</th>
+				<th id="bid">Best offer</th>
+				<th id="bidder">Bidder</th>
+				<th id="stopdate">Stop date</th>
+				<th id="bidding">Bidding</th>
+			</tr>
+			<tr>
+				<th id="id">ID</th>
+				<th id="name">Name</th>
+				<th id="description">Description</th>
+				<th id="price">Price</th>
+				<th id="gap">Bid inc.</th>
+				<th id="bid">Best offer</th>
+				<th id="bidder">Bidder</th>
+				<th id="stopdate">Stop date</th>
+				<th id="bidding">Bidding</th>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

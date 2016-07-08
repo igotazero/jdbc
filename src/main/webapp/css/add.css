@@ -1,0 +1,18 @@
+h3 {
+    margin: 0;
+    color: white;
+}
+
+input#styled {
+	width: 300px;
+}
+
+textarea {
+	width: 298px;
+	max-width: 298px;
+	min-width: 298px;
+}
+
+.background {
+	width: 400px;
+}

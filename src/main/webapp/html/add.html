@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add product &middot; Marketplace</title>
+    <link href="../css/top_pannel.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/form.css" rel="stylesheet">
+    <link href="../css/add.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="panel">
+			<div class="logo left"><img src="../res/images/logo_main.png"></div>
+			<div class="item left">|</div>
+			<div class="item left"><a href="board.html">Board</a></div>
+			<div class="image right"><a href="login.html"><img src="../res/images/exit.png"></a></div>
+			<div class="item right"><a href="user_page.html">qwerty</a></div>
+			<div class="item right">$ 1.000.000</div>
+		</div>
+		<div class="background">
+			<h3>Add/edit product</h3>
+			</br>
+			<form>
+				<div class="form_row">
+					<div>Title</div>
+					<div><input id="styled" class="validate[required]" type="text" name="title"></div>
+				</div>
+				</br>
+				<div class="form_row">
+					<div>Description</div>
+					<div><textarea class="validate[required]" name="description" rows="3"></textarea></div>
+				</div>
+				</br>
+				<div class="form_row">
+					<div>Start price</div>
+					<div><input id="styled" class="validate[required]" type="text" name="start_price"></div>
+				</div>
+				</br>
+				<div class="form_row">
+					<div></div>
+					<div>Buy it now<input class="validate[required]" type="checkbox" name="buy_it_now"></div>
+				</div>
+				</br>
+				<div class="form_row">
+					<div>Gap</div>
+					<div><input id="styled" class="validate[required]" type="text" name="gap"></div>
+				</div>
+				</br>
+				<div class="form_row">
+					<div>Time left</div>
+					<div><input id="styled" class="validate[required]" type="text" name="time_left"></div>
+				</div>
+				</br>
+				<div class="form_row right">
+					<div><button type="submit">Publish / Save</button></div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

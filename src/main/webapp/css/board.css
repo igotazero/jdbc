@@ -1,0 +1,12 @@
+.border {
+	border: 4px double lightgrey;
+	padding: 6px;
+}
+
+form#span {
+	display: inline;
+}
+
+input#search {
+	width: 300px;
+}

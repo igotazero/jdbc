@@ -2,12 +2,32 @@ body {
     background-color: #66d9ff
 }
 
+h3 {
+	font-family: sans-serif;
+	font-size: 12pt;
+	color: black;
+}
+
+textarea {
+	font-size: 10pt;
+	font-family: sans-serif;
+}
+
 .cover {
 	margin-left: 50px;
 	margin-right: 50px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 	padding-bottom: 20px;
+	padding-top: 50px;
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.3);
 	background: white;
+	font-family: sans-serif;
+}
+
+div.ants {
+	border-top: 1px dashed;
+	border-color: grey;
+	width: 100%;
+	border-radius: 5px;
 }

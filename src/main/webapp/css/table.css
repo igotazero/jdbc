@@ -20,14 +20,11 @@ td {
 #tbody{
 	height:150px;
 }
-/*
-#id {width: 3%; 	}
-#name {width: 10%; }
-#description {width: 20%; }
-#price {width: 5%; 	}
-#gap {width: 5%; 	}
-#bid {width: 5%; 	}
-#bidder {width: 15%; }
-#stopdate {width: 10%; }
-#bidding {width: 20%; }
-*/
+
+table tbody tr:nth-child(odd){ /* Задаем стили для нечетных рядов таблицы */
+    background: #f2f6f8;
+}
+ 
+table tbody tr:nth-child(even){ /* Задаем стили для четных рядов таблицы */
+    background: #fff;
+}
