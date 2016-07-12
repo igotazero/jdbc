@@ -29,3 +29,22 @@
 .right {
 	justify-content: flex-end;
 }
+
+.paper{
+	position: absolute;
+	float: left;
+	display: block;
+	height: 19px;
+	background: white;
+	color: #a3a3c2;
+	margin-left: 170px;
+	padding-left: 3px;
+	padding-top: 3px;
+	padding-right: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.21);
+}
+
+input#mess {
+	display: block;
+	float: left;
+}

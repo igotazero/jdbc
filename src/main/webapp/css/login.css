@@ -1,3 +1,7 @@
 .background {
-	
+	width: 200px;
+}
+
+.form_row {
+	margin: right;
 }
