@@ -33,7 +33,7 @@
 .paper{
 	position: absolute;
 	float: left;
-	display: block;
+	display: none;
 	height: 19px;
 	background: white;
 	color: #a3a3c2;
@@ -44,7 +44,7 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.21);
 }
 
-input#mess {
+#mess{
 	display: block;
 	float: left;
 }

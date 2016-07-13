@@ -7,6 +7,8 @@
     <link href="../css/top_pannel.css" rel="stylesheet">
     <link href="../css/form.css" rel="stylesheet">
     <link href="../css/registration.css" rel="stylesheet">
+    <script type='text/javascript' src='../tools/jquery-3.0.0.min.js'></script>
+    <script type='text/javascript' src='../tools/validation.js'></script>
 </head>
 <body>
 	<div class="container">
@@ -19,30 +21,30 @@
 		<div class="background">
 			<h3>Registration</h3>
 			</br>
-			<form>
+			<form method="GET" onsubmit="return validate()">
 				<div class="form_row">
 					<div>Login</div>
-					<div><input class="validate[required]" type="text" name="login"></div>
+					<div><input class="required login coincidence" id="mess" type="text" name="login"></div>
 				</div>
 				</br>
 				<div class="form_row">
 					<div>Password</div>
-					<div><input class="validate[required]" type="password" name="password"></div>
+					<div><input class="required password coincidence" id="mess" type="password" name="password"></div>
 				</div>
 				</br>
 				<div class="form_row">
 					<div>Re-enter password</div>
-					<div><input class="validate[required]" type="password" name="re_password"></div>
+					<div><input class="required password" id="mess" type="password" name="re_password"></div>
 				</div>
 				</br>
 				<div class="form_row">
 					<div>Full name</div>
-					<div><input class="validate[required]" type="text" name="full_name"></div>
+					<div><input class="required" id="mess" type="text" name="full_name"></div>
 				</div>
 				</br>
 				<div class="form_row">
 					<div>Billing address</div>
-					<div><textarea class="address" name="address" rows="3"></textarea></div>
+					<div><textarea class="address required" id="mess" name="address" rows="3"></textarea></div>
 				</div>
 				</br>
 				<div class="form_row right">
