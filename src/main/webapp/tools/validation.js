@@ -3,15 +3,16 @@ var LOGIN_VALUE = "<div class='paper'>Please, enter a valid login</div>";
 var CONCIDENCED_FIELDS = "<div class='paper'>Fields must be different</div>";
 var MUST_MATCH = "<div class='paper'>Passwords must match</div>";
 var PASSWORD_LENGTH = "<div class='paper'>The password must be longer than 10 characters</div>";
+var MUST_BE_NUMBER = "<div class='paper'>Value must be a number</div>";
 
 function validate() {
     clear();
     var allright = true;
-	//var x = document.forms["myForm"]["login"].value;
     var required = $('.required');
     var login = $('.login');
     var coincidence = $('.coincidence');
     var passwords = $('.password');
+    var numbers = $('.number');
 
     for (var i = required.length - 1; i >= 0; i--) {
         if(!check_fill(required[i].value)){
@@ -34,22 +35,12 @@ function validate() {
                         allright = false;
                     }
                 }else{
-                    if (!check_empty_values(passwords)){
-                        if (!check_coincidence(passwords)){
-                            for (var i = passwords.length - 1; i >= 0; i--) {
-                                show(passwords[i], MUST_MATCH); 
-                            }
-                            allright = false;
-                        }else{
-                            if (!check_length(passwords[0].value, 10)){
-                                show(passwords[0], PASSWORD_LENGTH);
-                                allright = false;
-                            }
-                        }
-                    }
+                    check_passwords(passwords, allright);
                 }
             }
         }
+    }else{
+        check_passwords(passwords, allright);
     }
     return allright;
 }
@@ -57,6 +48,22 @@ function validate() {
 function show(child, message){
     $(child).parent().append(message);
     $(".paper").fadeIn(200);
+}
+
+function check_passwords(passwords, allright){
+    if (!check_empty_values(passwords)){
+        if (!check_coincidence(passwords)){
+            for (var i = passwords.length - 1; i >= 0; i--) {
+                show(passwords[i], MUST_MATCH); 
+            }
+            allright = false;
+        }else{
+            if (!check_length(passwords[0].value, 10)){
+                show(passwords[0], PASSWORD_LENGTH);
+                allright = false;
+            }
+        }
+    }
 }
 
 function check_coincidence(args){
