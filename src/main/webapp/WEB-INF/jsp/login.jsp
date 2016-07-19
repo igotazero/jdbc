@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign in &middot; Marketplace</title>
-    <link href="/css/base.css" rel="stylesheet">
-    <link href="css/top_pannel.css" rel="stylesheet">
-    <link href="css/form.css" rel="stylesheet">
-    <script type='text/javascript' src='tools/jquery-3.0.0.min.js'></script>
-    <script type='text/javascript' src='tools/validation.js'></script>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/top_pannel.css" rel="stylesheet">
+    <link href="../../css/form.css" rel="stylesheet">
+    <script type='text/javascript' src='../../tools/jquery-3.0.0.min.js'></script>
+    <script type='text/javascript' src='../../tools/validation.js'></script>
 </head>
 <body>
 <div class="container">

@@ -3,7 +3,7 @@ h3 {
     color: white;
 }
 
-input#styled {
+input.styled {
 	width: 300px;
 }
 

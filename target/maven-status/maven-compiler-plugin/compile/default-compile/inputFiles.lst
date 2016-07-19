@@ -1,14 +1,15 @@
 D:\projects\onlineMarketplace\src\main\java\controller\dao\FactoryDAO.java
+D:\projects\onlineMarketplace\src\main\java\controller\servlets\actions\RegistrationPage.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\DAOException.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\oracle\OracleUserDAO.java
+D:\projects\onlineMarketplace\src\main\java\controller\servlets\ContactController.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\oracle\Executor.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\ResultHandler.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\oracle\OracleProductDAO.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\oracle\OracleBidDAO.java
 D:\projects\onlineMarketplace\src\main\java\model\Product.java
-D:\projects\onlineMarketplace\src\main\java\controller\Main.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\ProductDAO.java
-D:\projects\onlineMarketplace\src\main\java\controller\servlets\Action.java
+D:\projects\onlineMarketplace\src\main\java\controller\servlets\actions\LoginPage.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\oracle\ParseHandler.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\UserDAO.java
 D:\projects\onlineMarketplace\src\main\java\controller\dao\BidDAO.java
