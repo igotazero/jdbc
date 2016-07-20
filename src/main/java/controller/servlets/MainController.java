@@ -39,9 +39,9 @@ public class MainController {
         return "change";
     }
 
-    @RequestMapping(value = "/my_requsites", method = RequestMethod.GET)
+    @RequestMapping(value = "/my_requisites", method = RequestMethod.GET)
     public String myRequsites(ModelMap model) {
-        return "my_requsites";
+        return "my_requisites";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)

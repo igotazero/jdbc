@@ -12,6 +12,9 @@
 
     <mvc:annotation-driven />
     <context:component-scan base-package="main.java.controller.servlets" />
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/tools/**" location="/tools/" />
+    <mvc:resources mapping="res/images/**" location="res/images/" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />

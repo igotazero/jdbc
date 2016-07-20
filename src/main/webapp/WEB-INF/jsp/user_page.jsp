@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
     <div class="item left"><a href="board">Board</a></div>
     <div class="item left"><a href="add">Add product</a></div>
     <div class="item left"><a href="my_requisites">My requisites</a></div>
-    <div class="image right"><a href="login.htm"><img src="res/images/exit.png"></a></div>
+    <div class="image right"><a href="<c:url value="/logout" />"><img src="res/images/exit.png"></a></div>
     <div class="item right"><a href="user_page">qwerty</a></div>
     <div class="item right">$ 1.000.000</div>
 </div>
