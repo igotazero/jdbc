@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ page isELIgnored="false"%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -20,19 +21,20 @@
     </div>
     <div class="background">
         <img src="res/images/logo.png">
-        <c:url value="/j_spring_security_check" var="loginUrl" />
+        <c:url var="loginUrl" value="/login" />
         <form action="${loginUrl}" method="POST" onsubmit="return validate()">
             <div class="form_row">
-                <div><input class="mess required login coincidence" type="text" name="j_username" placeholder="login"></div>
+                <div><input class="mess required login coincidence" type="text" name="username" placeholder="login"></div>
             </div>
             </br>
             <div class="form_row">
-                <div><input class="mess required coincidence" type="password" name="j_password" placeholder="password"></div>
+                <div><input class="mess required coincidence" type="password" name="password" placeholder="password"></div>
             </div>
             </br>
             <div class="form_row">
                 <div><button type="submit">Log in</button></div>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
     </div>
 </div>

@@ -1,4 +1,4 @@
-package main.java.controller.servlets;
+package main.java.controller.servlets.beans;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,38 +6,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Created by Andrei_Zanozin on 7/19/2016.
  */
-@Controller
+
 public class Router {
-    @RequestMapping("/")
+ /*   @RequestMapping("/")
     public String index(){
         return "forward:/WEB-INF/jsp/login.jsp";
     }
-    @RequestMapping("/add.htm")
+    @RequestMapping("/add")
     public String add(){
         return "forward:/WEB-INF/jsp/add.jsp";
     }
-    @RequestMapping("/board.htm")
+    @RequestMapping("/board")
     public String board(){
-        return "forward:/WEB-INF/jsp/board.jsp";
+        return "forward:board";
     }
-    @RequestMapping("/change.htm")
+    @RequestMapping("/change")
     public String change(){
         return "forward:/WEB-INF/jsp/change.jsp";
     }
-    @RequestMapping("/login.htm")
+    @RequestMapping("/login")
     public String login(){
         return "forward:/WEB-INF/jsp/login.jsp";
     }
-    @RequestMapping("/my_requisites.htm")
+    @RequestMapping("/my_requisites")
     public String myRequisites(){
         return "forward:/WEB-INF/jsp/my_requisites.jsp";
     }
-    @RequestMapping("/registration.htm")
+    @RequestMapping("/registration")
     public String registration(){
         return "forward:/WEB-INF/jsp/registration.jsp";
     }
-    @RequestMapping("/user_page.htm")
+    @RequestMapping("/user_page")
     public String userPage(){
         return "forward:/WEB-INF/jsp/user_page.jsp";
-    }
+    }*/
 }
