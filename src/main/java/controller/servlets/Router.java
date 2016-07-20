@@ -1,4 +1,4 @@
-package main.java.controller.servlets.actions;
+package main.java.controller.servlets;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class Router {
+    @RequestMapping("/")
+    public String index(){
+        return "forward:/WEB-INF/jsp/login.jsp";
+    }
     @RequestMapping("/add.htm")
     public String add(){
         return "forward:/WEB-INF/jsp/add.jsp";
