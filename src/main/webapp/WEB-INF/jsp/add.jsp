@@ -16,9 +16,9 @@
     <div class="panel">
         <div class="logo left"><img src="res/images/logo2.png" height="30px" width="30px"></div>
         <div class="item left">|</div>
-        <div class="item left"><a href="board.htm">Board</a></div>
-        <div class="image right"><a href="login.htm"><img src="res/images/exit.png"></a></div>
-        <div class="item right"><a href="user_page.htm">qwerty</a></div>
+        <div class="item left"><a href="board">Board</a></div>
+        <div class="image right"><a href="login"><img src="res/images/exit.png"></a></div>
+        <div class="item right"><a href="user_page">qwerty</a></div>
         <div class="item right">$ 1.000.000</div>
     </div>
     <div class="background">

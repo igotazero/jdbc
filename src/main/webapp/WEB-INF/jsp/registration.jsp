@@ -15,8 +15,8 @@
     <div class="panel">
         <div class="logo left"><img src="res/images/logo2.png" height="30px" width="30px"></div>
         <div class="item left">|</div>
-        <div class="item left"><a href="board.htm">Board</a></div>
-        <div class="item left"><a href="login.htm">Login</a></div>
+        <div class="item left"><a href="board">Board</a></div>
+        <div class="item left"><a href="login">Login</a></div>
     </div>
     <div class="background">
         <h3>Registration</h3>

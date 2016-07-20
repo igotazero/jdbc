@@ -16,8 +16,8 @@
 <body>
 <div class="container">
     <div class="panel">
-        <div class="item left"><a href="board.htm">Board</a></div>
-        <div class="item left"><a href="registration.htm">Registration</a></div>
+        <div class="item left"><a href="board">Board</a></div>
+        <div class="item left"><a href="registration">Registration</a></div>
     </div>
     <div class="background">
         <img src="res/images/logo.png">

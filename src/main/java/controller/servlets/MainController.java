@@ -20,25 +20,38 @@ import javax.servlet.http.HttpServletResponse;
 public class MainController {
 
     @RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
-    public String homePage(ModelMap model) {
+    public String login(ModelMap model) {
         return "login";
     }
 
     @RequestMapping(value = "/board", method = RequestMethod.GET)
-    public String adminPage(ModelMap model) {
+    public String board(ModelMap model) {
         return "board";
     }
 
-    @RequestMapping(value = "/db", method = RequestMethod.GET)
-    public String dbaPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
-        return "dba";
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String add(ModelMap model) {
+        return "add";
     }
 
-    @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
-    public String accessDeniedPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
-        return "accessDenied";
+    @RequestMapping(value = "/change", method = RequestMethod.GET)
+    public String change(ModelMap model) {
+        return "change";
+    }
+
+    @RequestMapping(value = "/my_requsites", method = RequestMethod.GET)
+    public String myRequsites(ModelMap model) {
+        return "my_requsites";
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(ModelMap model) {
+        return "registration";
+    }
+
+    @RequestMapping(value = "/user_page", method = RequestMethod.GET)
+    public String userPage(ModelMap model) {
+        return "user_page";
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
@@ -53,7 +66,6 @@ public class MainController {
     private String getPrincipal(){
         String userName = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         if (principal instanceof UserDetails) {
             userName = ((UserDetails)principal).getUsername();
         } else {

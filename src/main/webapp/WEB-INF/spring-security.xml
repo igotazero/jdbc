@@ -9,7 +9,9 @@
     <http use-expressions="true">
         <intercept-url pattern="/" access="permitAll" />
         <intercept-url pattern="/login" access="permitAll" />
-        <intercept-url pattern="/board**" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/registration" access="permitAll" />
+        <intercept-url pattern="/board" access="permitAll" />
+        <intercept-url pattern="/*" access="hasRole('ROLE_USER')" />
 
         <form-login
                 login-page='/login'
