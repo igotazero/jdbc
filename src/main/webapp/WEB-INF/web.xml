@@ -5,7 +5,7 @@
 
     <display-name>Online Marketplace</display-name>
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>login.htm</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -20,12 +20,12 @@
 
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>*.htm</url-pattern>
     </servlet-mapping>
 
-    <listener>
+    <!--listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
-    </listener>
+    </listener-->
 </web-app>

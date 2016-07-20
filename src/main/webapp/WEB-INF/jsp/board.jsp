@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Board &middot; Marketplace</title>
-    <link href="../../css/top_pannel.css" rel="stylesheet">
-    <link href="../../css/base.css" rel="stylesheet">
-    <link href="../../css/table.css" rel="stylesheet">
-    <link href="../../css/board.css" rel="stylesheet">
+    <link href="css/top_pannel.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/table.css" rel="stylesheet">
+    <link href="css/board.css" rel="stylesheet">
 </head>
 <body>
 <div class="panel">
-    <div class="logo left"><img src="../../res/images/logo2.png" height="30px" width="30px"></div>
+    <div class="logo left"><img src="res/images/logo2.png" height="30px" width="30px"></div>
     <div class="item left">|</div>
-    <div class="item left"><a href="add.jsp">Add product</a></div>
-    <div class="image right"><a href="login.jsp"><img src="../../res/images/exit.png"></a></div>
-    <div class="item right"><a href="user_page.jsp">qwerty</a></div>
+    <div class="item left"><a href="add.htm">Add product</a></div>
+    <div class="image right"><a href="login.htm"><img src="res/images/exit.png"></a></div>
+    <div class="item right"><a href="user_page.htm">qwerty</a></div>
     <div class="item right">$ 1.000.000</div>
 </div>
 <div class="cover">

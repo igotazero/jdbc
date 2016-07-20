@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>My requisites &middot; Marketplace</title>
-    <link href="../../css/top_pannel.css" rel="stylesheet">
-    <link href="../../css/base.css" rel="stylesheet">
-    <link href="../../css/my_requisites.css" rel="stylesheet">
+    <link href="css/top_pannel.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/my_requisites.css" rel="stylesheet">
 </head>
 <body>
 <div class="cover">
     <div class="panel">
-        <div class="logo left"><img src="../../res/images/logo2.png" height="30px" width="30px"></div>
+        <div class="logo left"><img src="res/images/logo2.png" height="30px" width="30px"></div>
         <div class="item left">|</div>
-        <div class="item left"><a href="board.jsp">Board</a></div>
-        <div class="item left"><a href="add.jsp">Add product</a></div>
-        <div class="image right"><a href="login.jsp"><img src="../../res/images/exit.png"></a></div>
-        <div class="item right"><a href="user_page.jsp">qwerty</a></div>
+        <div class="item left"><a href="board.htm">Board</a></div>
+        <div class="item left"><a href="add.htm">Add product</a></div>
+        <div class="image right"><a href="login.htm"><img src="res/images/exit.png"></a></div>
+        <div class="item right"><a href="user_page.htm">qwerty</a></div>
         <div class="item right">$ 1.000.000</div>
     </div>
-    <h3>My requisites</h3> (<a id="nobr" href="change.jsp">change</a>)</br>
+    <h3>My requisites</h3> (<a id="nobr" href="change.htm">change</a>)</br>
     <div class="table">
         <div class="row">
             <div class="cell first">Login:</div>
