@@ -1,5 +1,8 @@
 package main.java.controller.servlets.security;
 
+import main.java.controller.dao.DAOException;
+import main.java.controller.dao.FactoryDAO;
+import main.java.controller.dao.UserDAO;
 import main.java.controller.servlets.services.UserService;
 import main.java.model.User;
 import main.java.model.UserRole;
@@ -16,18 +19,27 @@ import java.util.Set;
 /**
  * Created by Andrei_Zanozin on 7/20/2016.
  */
-@Service
+@Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
-    private UserService userService;
+    private UserDAO dao = FactoryDAO.getConcreteFactory(FactoryDAO.CURRENT_SOURCE).getUserDAO();
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userService.getUser(login);
-        Set<GrantedAuthority> roles = new HashSet();
-        roles.add(new SimpleGrantedAuthority(UserRole.USER.name()));
-        UserDetails userDetails = new org.springframework.security.core.userdetails.User(
-                user.getLogin(), user.getPassword(), roles);
-        return userDetails;
+
+        User user;
+        try {
+            user = dao.get(login);
+            if (user == null){
+                throw new UsernameNotFoundException("User not found");
+            }else{
+                Set<GrantedAuthority> roles = new HashSet();
+                roles.add(new SimpleGrantedAuthority("ROLE_USER"));
+                UserDetails userDetails = new org.springframework.security.core.userdetails.User(
+                        user.getLogin(), user.getPassword(), true, true, true, true, roles);
+                return userDetails;
+            }
+        }catch (DAOException e){
+            throw new UsernameNotFoundException(e.getMessage());
+        }
     }
 }

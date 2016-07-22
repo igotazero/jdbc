@@ -46,12 +46,28 @@
                 <version>2.1.1</version>
                 <configuration>
                     <warName>onlineMarketplace</warName>
+                    <webResources>
+                        <resource>
+                            <directory>${basedir}/lib</directory>
+                            <targetPath>WEB-INF/lib</targetPath>
+                            <includes>
+                                <include>**/*.jar</include>
+                            </includes>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>com.oracle.jdbc</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0.2.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/ojdbc7.jar</systemPath>
+        </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>

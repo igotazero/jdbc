@@ -4,6 +4,8 @@ import main.java.controller.dao.DAOException;
 import main.java.controller.dao.ResultHandler;
 import main.java.controller.dao.UserDAO;
 import main.java.model.User;
+import org.springframework.stereotype.Repository;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.List;
 /**
  * Created by Andrei_Zanozin on 6/23/2016.
  */
+
 public class OracleUserDAO implements UserDAO {
     private final String TABLE_NAME = "Users";
     private final String LOGIN = "LOGIN";
