@@ -24,10 +24,10 @@ public class Executor<T>  {
             }
         }catch (SQLIntegrityConstraintViolationException e){
             toLog(e);
-            throw new DAOException("Unique constraint violated", e);
+            throw new DAOException("User already exists", e);
         }catch (SQLException e){
             toLog(e);
-            throw new DAOException("Failed update table", e);
+            throw new DAOException("Failed update database", e);
         }
     }
 

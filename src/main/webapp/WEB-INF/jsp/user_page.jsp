@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,57 +18,38 @@
     <div class="item left"><a href="add">Add product</a></div>
     <div class="item left"><a href="my_requisites">My requisites</a></div>
     <div class="image right"><a href="<c:url value="/logout" />"><img src="res/images/exit.png"></a></div>
-    <div class="item right"><a href="user_page">qwerty</a></div>
+    <div class="item right"><a href="user_page">${pageContext.request.userPrincipal.name}</a></div>
     <div class="item right">$ 1.000.000</div>
 </div>
 <div class="cover">
     <h3>My products</h3>
-    <table>
-        <tr id="header">
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Bid inc.</th>
-            <th>Best offer</th>
-            <th>Bidder</th>
-            <th>Stop date</th>
-            <th>Bidding</th>
-        </tr>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Bid inc.</th>
-            <th>Best offer</th>
-            <th>Bidder</th>
-            <th>Stop date</th>
-            <th>Bidding</th>
-        </tr>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Bid inc.</th>
-            <th>Best offer</th>
-            <th>Bidder</th>
-            <th>Stop date</th>
-            <th>Bidding</th>
-        </tr>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Bid inc.</th>
-            <th>Best offer</th>
-            <th>Bidder</th>
-            <th>Stop date</th>
-            <th>Bidding</th>
-        </tr>
-    </table>
+        <core:if test="${fn:length(productList) > 0}">
+            <table>
+                <tr id="header">
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Bid inc.</th>
+                    <th>Best offer</th>
+                    <th>Bidder</th>
+                    <th>Stop date</th>
+                    <th>Bidding</th>
+                </tr>
+                <core:forEach items="${productList}">
+                    <tr>
+                        <td>${product.id}</td>
+                        <td>${product.name}</td>
+                        <td>${product.description}</td>
+                        <td>${product.price}</td>
+                        <td>${product.gap}</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>${product.startBiddingDate + product.hours}</td>
+                    </tr>
+                </core:forEach>
+            </table>
+        </core:if>
     <div><h3>Pending payment</h3></div>
     <div class="ants"/>
 </div>

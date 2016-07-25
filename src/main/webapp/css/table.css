@@ -15,6 +15,12 @@ th {
 
 td {
 	text-align: center;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+td.cell_left {
+	text-align: left;
 }
 
 #tbody{

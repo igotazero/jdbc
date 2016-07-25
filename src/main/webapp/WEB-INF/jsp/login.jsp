@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
@@ -10,6 +11,7 @@
     <link href="css/base.css" rel="stylesheet">
     <link href="css/top_pannel.css" rel="stylesheet">
     <link href="css/form.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
     <script type='text/javascript' src='tools/jquery-3.0.0.min.js'></script>
     <script type='text/javascript' src='tools/validation.js'></script>
 </head>
@@ -24,15 +26,19 @@
         <c:url var="loginUrl" value="/login" />
         <form action="${loginUrl}" method="POST" onsubmit="return validate()">
             <div class="form_row">
-                <div><input class="mess required login coincidence" type="text" name="username" placeholder="login"></div>
+                <div><input class="styled mess required login coincidence" type="text" name="username" placeholder="login">
+                    <core:if test="${not empty loginMsg}">
+                        <div class="paper" style="display: block">${loginMsg}</div>
+                    </core:if>
+                </div>
             </div>
-            </br>
+            <br/>
             <div class="form_row">
-                <div><input class="mess required coincidence" type="password" name="password" placeholder="password"></div>
+                <div><input class="styled mess required coincidence" type="password" name="password" placeholder="password"></div>
             </div>
-            </br>
+            <br/>
             <div class="form_row">
-                <div><button type="submit">Log in</button></div>
+                <div><button type="submit">Log in</button></div><div><input class="left" type="checkbox" name="remember-me">Remember me</div>
             </div>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>

@@ -19,7 +19,7 @@
         <div class="item left"><a href="board">Board</a></div>
         <div class="item left"><a href="add">Add product</a></div>
         <div class="image right"><a href="<c:url value="/logout" />"><img src="res/images/exit.png"></a></div>
-        <div class="item right"><a href="user_page">qwerty</a></div>
+        <div class="item right"><a href="user_page">${pageContext.request.userPrincipal.name}</a></div>
         <div class="item right">$ 1.000.000</div>
     </div>
     <div class="background">

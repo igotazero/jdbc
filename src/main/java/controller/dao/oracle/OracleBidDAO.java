@@ -98,9 +98,10 @@ public class OracleBidDAO implements BidDAO{
     @Override
     public Bid getGreatestByProduct(int productId) throws DAOException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " +
-                BID + " IN (SELECT MAX(" + BID + ") FROM " + TABLE_NAME + ") AND " +
-                PRODUCT_ID + " = ?";
+                BID + " IN (SELECT MAX(" + BID + ") FROM " + TABLE_NAME + " WHERE " +
+                PRODUCT_ID + " = ?) AND " + PRODUCT_ID + " = ?";
         List<String> args = new ArrayList<>();
+        args.add(Integer.toString(productId));
         args.add(Integer.toString(productId));
         List<Bid> res = executor.execQuery(query, args, bidResultHandler);
         if (!res.isEmpty()){

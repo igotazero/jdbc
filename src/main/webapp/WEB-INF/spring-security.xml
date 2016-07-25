@@ -6,7 +6,7 @@
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
-    <beans:bean id="userDetailsService" class="main.java.controller.servlets.security.UserDetailsServiceImpl"/>
+    <beans:bean id="userDetailsService" class="main.java.controller.servlets.services.UserDetailsServiceImpl"/>
 
     <!--authentication-manager>
         <authentication-provider user-service-ref='userDetailsService'>
@@ -14,11 +14,10 @@
         </authentication-provider>
     </authentication-manager-->
 
-
     <security:http use-expressions="true">
         <security:intercept-url pattern="/" access="permitAll" />
         <security:intercept-url pattern="/login" access="permitAll" />
-        <security:intercept-url pattern="/registration" access="permitAll" />
+        <security:intercept-url pattern="/registration*" access="permitAll" />
         <security:intercept-url pattern="/board" access="permitAll" />
         <security:intercept-url pattern="/*" access="hasRole('ROLE_USER')" />
 
@@ -27,10 +26,14 @@
                 username-parameter="username"
                 password-parameter="password"
                 default-target-url="/user_page"
-                authentication-failure-url="/login" />
+                authentication-failure-url="/login?error=true" />
 
-        <security:logout logout-success-url="/login" />
-        <security:csrf/>
+        <security:logout logout-url="/logout" logout-success-url="/login"/>
+        <security:remember-me
+                remember-me-parameter="remember-me"
+                remember-me-cookie="remember-me"
+                token-validity-seconds="86400"/>
+        <security:csrf disabled="true"/>
     </security:http>
 
 
@@ -38,5 +41,6 @@
         <security:authentication-provider user-service-ref="userDetailsService">
         </security:authentication-provider>
     </security:authentication-manager>
+
 
 </beans:beans>

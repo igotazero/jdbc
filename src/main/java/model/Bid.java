@@ -18,6 +18,12 @@ public class Bid {
         this.bid = bid;
     }
 
+    public Bid(String userLogin, int productId, double bid) {
+        this.userLogin = userLogin;
+        this.productId = productId;
+        this.bid = bid;
+    }
+
     public int getId() {
         return id;
     }

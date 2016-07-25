@@ -10,3 +10,18 @@ form#span {
 input#search {
 	width: 300px;
 }
+
+input.bid{
+	width: calc(60% - 5px);
+	float: left;
+}
+
+button.bid{
+	display: inline-block;
+	width: calc(40% - 5px);
+	float: right;
+}
+
+button.fullsize{
+	width: 100%;
+}

@@ -20,6 +20,8 @@ div.first {
 div.money {
 	background-image: url("../res/images/back_money.png");
 	padding-left: 10px;
+	padding-right: 10px;
+	min-width: 200px;
 }
 
 h3 {

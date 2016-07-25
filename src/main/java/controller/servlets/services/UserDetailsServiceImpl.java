@@ -1,14 +1,13 @@
-package main.java.controller.servlets.security;
+package main.java.controller.servlets.services;
 
 import main.java.controller.dao.DAOException;
 import main.java.controller.dao.FactoryDAO;
 import main.java.controller.dao.UserDAO;
-import main.java.controller.servlets.services.UserService;
 import main.java.model.User;
 import main.java.model.UserRole;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,11 +20,14 @@ import java.util.Set;
  */
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private UserDAO dao = FactoryDAO.getConcreteFactory(FactoryDAO.CURRENT_SOURCE).getUserDAO();
+    private UserDAO dao;
+
+    public UserDetailsServiceImpl(){
+        this.dao = FactoryDAO.getConcreteFactory(FactoryDAO.CURRENT_SOURCE).getUserDAO();
+    }
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-
         User user;
         try {
             user = dao.get(login);
@@ -33,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 throw new UsernameNotFoundException("User not found");
             }else{
                 Set<GrantedAuthority> roles = new HashSet();
-                roles.add(new SimpleGrantedAuthority("ROLE_USER"));
+                roles.add(new SimpleGrantedAuthority(UserRole.ROLE_USER.name()));
                 UserDetails userDetails = new org.springframework.security.core.userdetails.User(
                         user.getLogin(), user.getPassword(), true, true, true, true, roles);
                 return userDetails;
@@ -41,5 +43,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }catch (DAOException e){
             throw new UsernameNotFoundException(e.getMessage());
         }
+    }
+
+    public static String getPrincipalName(){
+        String userName = null;
+        Object principal = getPrincipal();
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        }
+        return userName;
+    }
+
+    public static Object getPrincipal(){
+        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }

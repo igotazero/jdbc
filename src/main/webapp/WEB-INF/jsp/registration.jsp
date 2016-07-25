@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,33 +22,42 @@
     </div>
     <div class="background">
         <h3>Registration</h3>
-        </br>
-        <form method="GET" onsubmit="return validate()">
+        <br/>
+        <form action="registration.form" method="post" onsubmit="return validate()">
             <div class="form_row">
                 <div>Login</div>
-                <div><input class="mess required login coincidence" type="text" name="login"></div>
+                <div>
+                    <input class="mess required login coincidence" type="text" name="login">
+                    <core:if test="${not empty regMsg}">
+                        <div class="paper" style="display: block">${regMsg}</div>
+                    </core:if>
+                </div>
             </div>
-            </br>
+            <br/>
             <div class="form_row">
                 <div>Password</div>
-                <div><input class="mess required password coincidence" type="password" name="password"></div>
+                <div><input class="mess required password coincidence" type="password" name="password"
+                            value="${passwordOnRefresh}">
+                </div>
             </div>
-            </br>
+            <br/>
             <div class="form_row">
                 <div>Re-enter password</div>
-                <div><input class="mess required password" type="password" name="re_password"></div>
+                <div><input class="mess required password" type="password" name="re_password"
+                            value="${passwordOnRefresh}"></div>
             </div>
-            </br>
+            <br/>
             <div class="form_row">
                 <div>Full name</div>
-                <div><input class="mess required" type="text" name="full_name"></div>
+                <div><input class="mess required" type="text" name="full_name" value="${nameOnRefresh}"></div>
             </div>
-            </br>
+            <br/>
             <div class="form_row">
                 <div>Billing address</div>
-                <div><textarea class="mess address required" name="address" rows="3"></textarea></div>
+                    <div><textarea class="mess address required" name="address" rows="3">${addressOnRefresh}</textarea>
+                    </div>
             </div>
-            </br>
+            <br/>
             <div class="form_row right">
                 <div><button type="submit">Submit</button></div>
             </div>
