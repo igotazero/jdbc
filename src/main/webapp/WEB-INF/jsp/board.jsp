@@ -45,7 +45,9 @@
             <button type="submit">ok</button>
         </form>
     </div>
-    <div>${bidErr}</div>
+    <core:if test="${not empty bidErr}">
+        <div class="bid_err">${bidErr}</div>
+    </core:if>
     <h3>Actual products</h3>
     <core:if test="${fn:length(tableItemList) > 0}">
         <table>

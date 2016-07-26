@@ -25,3 +25,14 @@ button.bid{
 button.fullsize{
 	width: 100%;
 }
+
+.bid_err{
+	color: black;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	padding: 6px;
+	/*border: 1px dotted purple;*/
+	font-style: italic;
+	background-image: url("../res/images/error.jpg");
+	animation: animatedBackground 40s linear infinite;
+}
