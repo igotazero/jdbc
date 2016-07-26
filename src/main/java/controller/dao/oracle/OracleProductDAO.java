@@ -6,6 +6,7 @@ import main.java.controller.dao.ResultHandler;
 import main.java.model.Product;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -81,7 +82,11 @@ public class OracleProductDAO implements ProductDAO {
         args.add(ParseHandler.dateToString(product.getStartBiddingDate()));
         args.add(Integer.toString(ParseHandler.convert(product.isBuyNow())));
         args.add(Integer.toString(product.getId()));
-        return executor.execUpdate(query.toString(), args);
+        try {
+            return executor.execUpdate(query.toString(), args);
+        }catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override
@@ -95,6 +100,14 @@ public class OracleProductDAO implements ProductDAO {
         }else {
             return null;
         }
+    }
+
+    @Override
+    public List<Product> getProductsByUser(String userLogin) throws DAOException {
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + SELLER_ID + " = ?";
+        List<String> args = new ArrayList<>();
+        args.add(userLogin);
+        return executor.execQuery(query, args, productResultHandler);
     }
 
     @Override
@@ -121,7 +134,14 @@ public class OracleProductDAO implements ProductDAO {
         args.add(Double.toString(product.getGap()));
         args.add(Integer.toString(product.getHours()));
         args.add(Integer.toString(ParseHandler.convert(product.isBuyNow())));
-        return executor.execUpdate(query.toString(), args);
+        try {
+            return executor.execUpdate(query.toString(), args);
+        }catch (SQLIntegrityConstraintViolationException e){
+            throw new DAOException("Product already exists", e);
+        }
+        catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override
@@ -136,7 +156,11 @@ public class OracleProductDAO implements ProductDAO {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + id + " = ?";
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(id));
-        return executor.execUpdate(query, args);
+        try {
+            return executor.execUpdate(query, args);
+        }catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override
@@ -160,6 +184,10 @@ public class OracleProductDAO implements ProductDAO {
         List<String> args = new ArrayList<>();
         args.add(newOwner);
         args.add(Integer.toString(productID));
-        return executor.execUpdate(query, args);
+        try {
+            return executor.execUpdate(query, args);
+        }catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 }

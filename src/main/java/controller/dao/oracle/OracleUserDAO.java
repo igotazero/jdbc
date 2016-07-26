@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +58,13 @@ public class OracleUserDAO implements UserDAO {
         args.add(user.getPassword());
         args.add(user.getName());
         args.add(user.getAddress());
-        return executor.execUpdate(query.toString(), args);
+        try {
+            return executor.execUpdate(query.toString(), args);
+        }catch (SQLIntegrityConstraintViolationException e){
+            throw new DAOException("User already exists", e);
+        } catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override
@@ -92,7 +99,13 @@ public class OracleUserDAO implements UserDAO {
         args.add(user.getName());
         args.add(user.getAddress());
         args.add(user.getLogin());
-        return executor.execUpdate(query.toString(), args);
+        try {
+            return executor.execUpdate(query.toString(), args);
+        }catch (SQLIntegrityConstraintViolationException e){
+            throw new DAOException("User already exists", e);
+        } catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override
@@ -100,6 +113,10 @@ public class OracleUserDAO implements UserDAO {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + LOGIN + " = ?";
         List<String> args = new ArrayList<>();
         args.add(login);
-        return executor.execUpdate(query, args);
+        try {
+            return executor.execUpdate(query, args);
+        }catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class Executor<T>  {
     private static final Logger log = Logger.getLogger(Executor.class);
 
-    public int execUpdate(String query, List<String> args) throws DAOException{
+    public int execUpdate(String query, List<String> args) throws SQLException{
         try(Connection connection = Connector.getConnection()) {
             if (connection != null) {
                 PreparedStatement statement = connection.prepareStatement(query);
@@ -22,12 +22,8 @@ public class Executor<T>  {
             }else {
                 return 0;
             }
-        }catch (SQLIntegrityConstraintViolationException e){
-            toLog(e);
-            throw new DAOException("User already exists", e);
         }catch (SQLException e){
-            toLog(e);
-            throw new DAOException("Failed update database", e);
+            throw e;
         }
     }
 

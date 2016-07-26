@@ -14,4 +14,5 @@ public interface ProductDAO {
     int remove(int id) throws DAOException;
     List<Product> search(String subject, String attribute) throws DAOException;
     int changeOwner(int productID, String newOwner) throws DAOException;
+    List<Product> getProductsByUser(String userLogin) throws DAOException;
 }

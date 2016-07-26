@@ -5,8 +5,10 @@ import main.java.controller.dao.DAOException;
 import main.java.controller.dao.FactoryDAO;
 import main.java.controller.dao.ProductDAO;
 import main.java.controller.dao.oracle.ParseHandler;
+import main.java.controller.servlets.dto.CardItem;
 import main.java.controller.servlets.dto.TableItem;
 import main.java.model.Bid;
+import main.java.model.Deal;
 import main.java.model.Product;
 
 import java.util.ArrayList;
@@ -32,6 +34,10 @@ public class ProductHelper {
         return dao.get(id);
     }
 
+    public List<Product> getUsersProducts(String userLogin) throws DAOException{
+        return dao.getProductsByUser(userLogin);
+    }
+
     public List<TableItem> getTableItems(List<Product> list) throws DAOException{
         List<TableItem> res = new ArrayList<>();
         for(Product p : list){
@@ -52,12 +58,23 @@ public class ProductHelper {
             }
             Date date = new Date(p.getStartBiddingDate().getTime() + (p.getHours() * 3600000));
             tableItem.setStopDate(ParseHandler.dateToString(date));
-            if (p.isBuyNow()){
+            boolean isBuyNow = p.isBuyNow();
+            if (isBuyNow){
                 tableItem.setBuyNow("1");
             }else {
                 tableItem.setBuyNow("0");
             }
             tableItem.setSellerLogin(p.getSellerLogin());
+            DealHelper dealHelper = new DealHelper();
+            Deal deal = dealHelper.getDeal(p.getId());
+            if (deal != null){
+                tableItem.setInCart("1");
+                if (isBuyNow){
+                    tableItem.setBidder(deal.getBuyerId());
+                }
+            }else {
+                tableItem.setInCart("0");
+            }
             res.add(tableItem);
         }
         return res;

@@ -14,6 +14,7 @@ public class TableItem {
     private String stopDate;
     private String buyNow;
     private String sellerLogin;
+    private String inCart;
 
     public String getId() {
         return id;
@@ -93,5 +94,13 @@ public class TableItem {
 
     public void setSellerLogin(String sellerLogin) {
         this.sellerLogin = sellerLogin;
+    }
+
+    public String getInCart() {
+        return inCart;
+    }
+
+    public void setInCart(String inCart) {
+        this.inCart = inCart;
     }
 }

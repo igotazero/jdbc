@@ -9,6 +9,10 @@ tr#header {
 	background: #009999;
 }
 
+tr.incard{
+	color: darkgray;
+}
+
 th {
 	font-weight: normal;
 }

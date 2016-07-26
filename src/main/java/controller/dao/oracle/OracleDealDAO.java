@@ -4,11 +4,9 @@ import main.java.controller.dao.DAOException;
 import main.java.controller.dao.DealDAO;
 import main.java.controller.dao.ResultHandler;
 import main.java.model.Deal;
-import main.java.model.Product;
-import main.java.model.User;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,6 +44,15 @@ public class OracleDealDAO implements DealDAO {
             return list;
         }
     };
+
+    @Override
+    public List<Deal> getDealingsByUser(String userLogin) throws DAOException {
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + BUYER_ID + " = ?";
+        List<String> args = new ArrayList<>();
+        args.add(userLogin);
+        return executor.execQuery(query, args, dealResultHandler);
+    }
+
     @Override
     public int add(Deal deal) throws DAOException {
         StringBuilder query = new StringBuilder();
@@ -55,15 +62,20 @@ public class OracleDealDAO implements DealDAO {
                 .append(SELLER_ID).append(", ")
                 .append(BUYER_ID).append(", ")
                 .append(DEAL_DATE).append(") ")
-                .append("VALUES (?, ?, ?, ?, TO_DATE(?, '").append(ParseHandler.getOracleFormat()).append("'))");
+                .append("VALUES (?, ?, ?, ?, SYSDATE)");
 
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(deal.getProductId()));
         args.add(Double.toString(deal.getBidPrice()));
         args.add(deal.getSellerId());
         args.add(deal.getBuyerId());
-        args.add(ParseHandler.dateToString(deal.getDealDate()));
-        return executor.execUpdate(query.toString(), args);
+        try {
+            return executor.execUpdate(query.toString(), args);
+        }catch (SQLIntegrityConstraintViolationException e){
+            throw new DAOException("Product already purchased", e);
+        }catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override

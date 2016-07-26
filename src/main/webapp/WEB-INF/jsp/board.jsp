@@ -10,6 +10,7 @@
     <link href="css/base.css" rel="stylesheet">
     <link href="css/table.css" rel="stylesheet">
     <link href="css/board.css" rel="stylesheet">
+    <link href="css/errors.css" rel="stylesheet">
 </head>
 <body>
 <div class="panel">
@@ -45,9 +46,8 @@
             <button type="submit">ok</button>
         </form>
     </div>
-    <core:if test="${not empty bidErr}">
-        <div class="bid_err">${bidErr}</div>
-    </core:if>
+    <core:if test="${not empty bidErr}"><div class="err">${bidErr}</div></core:if>
+    <core:if test="${not empty bidMsg}"><div class="msg">${bidMsg}</div></core:if>
     <h3>Actual products</h3>
     <core:if test="${fn:length(tableItemList) > 0}">
         <table>
@@ -58,12 +58,12 @@
                 <th>Price</th>
                 <th>Bid inc.</th>
                 <th>Best offer</th>
-                <th>Bidder</th>
+                <th>Bidder / Buyer</th>
                 <th>Stop date</th>
                 <th style="width: 120px;">Bidding</th>
             </tr>
             <core:forEach items="${tableItemList}" var="tableItem" varStatus="sataus">
-                <tr>
+                <tr <core:if test="${tableItem.inCart == '1'}">class="incard"</core:if>>
                     <td class="cell_left">${tableItem.id}</td>
                     <td class="cell_left">${tableItem.title}</td>
                     <td class="cell_left">${tableItem.description}</td>
@@ -78,7 +78,8 @@
                                 <form id="row" action="buy.do" method="POST">
                                     <button name="buyButton" value="${tableItem.id}" type="submit" class="fullsize"
                                             <core:if test="${(empty pageContext.request.userPrincipal) ||
-                                             (pageContext.request.userPrincipal.name == tableItem.sellerLogin)}">
+                                             (pageContext.request.userPrincipal.name == tableItem.sellerLogin)
+                                             || (tableItem.inCart == '1')}">
                                                 disabled="true"
                                             </core:if>
                                     >
@@ -90,7 +91,8 @@
                                     <input class="bid" type="number" name="bidValue"/>
                                     <button class="bid" type="submit" name="bidButton" value="${tableItem.id}"
                                             <core:if test="${(empty pageContext.request.userPrincipal) ||
-                                             (pageContext.request.userPrincipal.name == tableItem.sellerLogin)}">
+                                             (pageContext.request.userPrincipal.name == tableItem.sellerLogin)
+                                             || (tableItem.inCart  == '1')}">
                                                 disabled="true"
                                             </core:if>
                                     >Bid!</button>

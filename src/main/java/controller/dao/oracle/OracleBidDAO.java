@@ -52,7 +52,11 @@ public class OracleBidDAO implements BidDAO{
         args.add(bid.getUserLogin());
         args.add(Integer.toString(bid.getProductId()));
         args.add(Double.toString(bid.getBid()));
-        return executor.execUpdate(query.toString(), args);
+        try {
+            return executor.execUpdate(query.toString(), args);
+        }catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override
@@ -76,7 +80,11 @@ public class OracleBidDAO implements BidDAO{
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + ID + " = ?";
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(id));
-        return executor.execUpdate(query, args);
+        try {
+            return executor.execUpdate(query, args);
+        }catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override
@@ -84,7 +92,11 @@ public class OracleBidDAO implements BidDAO{
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + USER_LOGIN + " = ?";
         List<String> args = new ArrayList<>();
         args.add(userLogin);
-        return executor.execUpdate(query, args);
+        try {
+            return executor.execUpdate(query, args);
+        }catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override
@@ -92,7 +104,11 @@ public class OracleBidDAO implements BidDAO{
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + PRODUCT_ID + " = ?";
         List<String> args = new ArrayList<>();
         args.add(Integer.toString(productId));
-        return executor.execUpdate(query, args);
+        try {
+            return executor.execUpdate(query, args);
+        }catch (SQLException e){
+            throw new DAOException("Failed update database", e);
+        }
     }
 
     @Override
